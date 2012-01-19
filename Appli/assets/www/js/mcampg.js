@@ -13,7 +13,7 @@ var cadre="";
 var sensPreview="recto";
 
 var fond_carte = new Image();
-fond_carte.src = "../images/dosCarte.png";
+fond_carte.src = "images/dosCarte.png";
 	
 			
 function getPhoto(){
@@ -74,7 +74,8 @@ function drawCarte(nomcadre){
 							 width: 300,
 							fromCenter: false});
 	}
-	 cadre=nomcadre;
+	cadre=nomcadre;
+	
 }
 
 function dessinecarte2()
@@ -107,16 +108,19 @@ function preview(){
 	var canvas = document.getElementById("mycanvas");
     
     srcRecto = canvas.toDataURL("image/png");
+
+
 	var imgRecto= jQuery('<img/>',{src:srcRecto, height:"140px", width:"280px"});
 	$("#recto").empty();
 	$("#recto").append(imgRecto);
-	$("#canvapreview").drawImage({source: fond_carte,
+	varti=$("#canvapreview").drawImage({source: fond_carte,
 							 x: 0,
 							 y: 0,
 							 height: 140,
 							 width: 280,
 							 fromCenter: false});
-    
+    $("#verso").empty();
+	$("#vecto").append(varti);
 	text=$("#textMessage")[0].value;
 	var lines = text.split("\n");
 	
@@ -136,7 +140,7 @@ function preview(){
 	srcVerso = versoCanvas[0].toDataURL("image/png");
 	var imgVerso= jQuery('<img/>',{src:srcVerso, height:"140px", width:"280px"});
 	
-	$("#verso").empty();
+
 	$("#verso").append(imgVerso);
 	$("#verso").hide();
 	*/
@@ -307,6 +311,8 @@ function addPanier()
 
 
 
+
+
 function validerPanier()
 {
 	$.mobile.changePage("#cartePoste");
@@ -410,6 +416,3 @@ function addC(numContact)
     function onError(contactError) {
         alert('Error!');
     }
-
-	
-	
