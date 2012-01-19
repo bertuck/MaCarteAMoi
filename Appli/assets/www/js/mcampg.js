@@ -113,9 +113,9 @@ function preview(){
 	$("#canvapreview").drawImage({source: fond_carte,
 							 x: 0,
 							 y: 0,
-							 height: 150,
-							 width: 300,
-							  fromCenter: false});
+							 height: 140,
+							 width: 280,
+							 fromCenter: false});
     
 	text=$("#textMessage")[0].value;
 	var lines = text.split("\n");
@@ -317,12 +317,99 @@ function validerPanier()
 function Validation() {
 				if (confirm("Confirmez-vous avoir les droits de diffusion de cette photo?"))
 				{
-				$.mobile.changePage("#connexion");
+				$.mobile.changePage("#message");
 				}
 			 }
 			 
 
+			function onBodyLoad()
+			{		
+				document.addEventListener("deviceready",onDeviceReady,false);
+			}
+			
+			function touchMove(event) {
+				event.preventDefault();
+			 }
 			 
+			 // contact
+			 
+    function onDeviceReady() {
+        // specify contact search criteria
+        var options = new ContactFindOptions();
+        options.filter="";          // empty search string returns all contacts
+        options.multiple=true;      // return multiple results
+		ListeContacts={};
+		
+        filter = ["displayName","addresses"];   // return contact.displayName field
+
+        // find contacts
+        navigator.contacts.find(filter, afficheListC, onError, options);
+
+    }
+
+
+	function afficheListC(contacts)
+	{
+				ListeContacts=contacts;
+				$("#listec").empty();
+		        for (var i=0; i<contacts.length; i++) 
+				{
+				dest=contacts[i].addresses;
+				nom=contacts[i].displayName;
+				if(dest!=null)
+					{
+						for (var j=0; j<dest.length; j++) 
+						{
+							Address=contacts[i].addresses[j].streetAddress;
+							Locality=contacts[i].addresses[j].locality;
+							Region=contacts[i].addresses[j].region;
+							PCode=contacts[i].addresses[j].postalCode;
+							Country=contacts[i].addresses[j].country;
+							// ligne='<li> <a href="javascript:addC('+adresse+');"><h6>'+nom+'</h6></a></li>';
+							ligne='<li> <a href="javascript:addC('+i+');"><h6>'+nom+'</h6></a></li>';
+// Si on a cliqué sur le "li" alors sauvegarder ses données.
+
+							$("#listec").append(ligne);
+
+						}
+					}
+				}
+			
+		$("#divListC").scrollview({"direction":"y"});
+		$.mobile.changePage("#listeCt");
+		$('#listec').listview("refresh");
+
+	}
+
+function addC(numContact) 
+{
+	dest=ListeContacts[numContact].addresses;
+	desti={};
+	desti["ligne1"]= ListeContacts[numContact].displayName;
+	desti["ligne2"]= dest[0].streetAddress;
+	desti["ligne3"]= dest[0].region;
+	desti["ligne4"]= dest[0].locality;
+	desti["ligne5"]= dest[0].postalCode;
+	desti["ligne6"]= dest[0].country;
+	num = $("#num").val() ;
+		   
+	if (num ==""){
+		carte.destinataires.push(desti);
+	}else{
+		carte.destinataires[num]=desti;
+	}
+	afficheListDest()
+}
+
+    // onSuccess: Get a snapshot of the current contacts
+    //
+
+
+    // onError: Failed to get the contacts
+    //
+    function onError(contactError) {
+        alert('Error!');
+    }
 
 	
 	

@@ -24,7 +24,7 @@
 	background: url(images/fondBlancGrille.jpg); 
 }
 
-#toolbardown
+.toolbardown
 {
 	background: url(images/topBarFond.png); 
 	height: 47px;
@@ -32,7 +32,7 @@
 	border:transparent; 
 }
 
-#toolbardown2
+.toolbardown2
 {
 	background: url(images/fondPanierCF.png); 
 	text-align:center;

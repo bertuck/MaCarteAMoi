@@ -7,23 +7,16 @@
 				
 				<link rel="stylesheet" href="css/mcam.css" />
 				<link rel="stylesheet"  href="css/jquery.mobile.scrollview.css" />
-				<!--
-				<script src="jquery.js"></script>
-				<script src="jquery.mobile.themeswitcher.js"></script>
-				<script src="jqm-docs.js"></script>
-				<script src="jquery.mobile-1.0.min.js"></script>
-				
-				-->
 				<script src="js/jquery/jquery.min.js"></script>
 				<script src="js/jquery/jquery-ui.min.js"></script>
 				<script src="js/jquery/jcanvas.min.js"></script>
 				<script src="js/jquery/jquery.mobile.min.js"></script>
 				<script src="js/jquery/jquery.mobile.scrollview.js"></script>
 				<script src="js/jquery/jquery.fieldtag.min.js"></script>
-		<script src="js/base.js"></script>
-		<script src="js/rotate3Di.js"></script>
-		<script src="js/mcampg.js"></script>
-		<script src="js/dessin.js"></script>
+				<script src="js/base.js"></script>
+				<script src="js/rotate3Di.js"></script>
+				<script src="js/mcampg.js"></script>
+		<!--<script src="js/dessin.js"></script>-->
 		
 		<!-- Signature -->
 		<link rel="stylesheet" href="build/jquery.signaturepad.css">
@@ -33,114 +26,10 @@
 			  $('.sigPad').signaturePad();
 			});
 		</script>
-		<script src="build/json2.min.js"></script>
 		
-		<script type="text/javascript" charset="utf-8">
-
-		//Gestion de contact
-			 
-			function onBodyLoad()
-			{		
-				document.addEventListener("deviceready",onDeviceReady,false);
-			}
-			
-			function touchMove(event) {
-				event.preventDefault();
-			 }
-			 
-			 // contact
-			 
-    function onDeviceReady() {
-        // specify contact search criteria
-        var options = new ContactFindOptions();
-        options.filter="";          // empty search string returns all contacts
-        options.multiple=true;      // return multiple results
-        filter = ["displayName","addresses"];   // return contact.displayName field
-
-        // find contacts
-        navigator.contacts.find(filter, afficheListC, onError, options);
-
-    }
-
-
-	function afficheListC(contacts)
-	{
-				$("#listec").empty();
-		        for (var i=0; i<contacts.length; i++) 
-				{
-				dest=contacts[i].addresses;
-				nom=contacts[i].displayName;
-				if(dest!=null)
-					{
-						for (var j=0; j<dest.length; j++) 
-						{
-							variab=i;
-							ligne='<li> <a href="javascript:addC();"><h6>'+nom+'</h6></a></li>';
-// Si on a cliqué sur le "li" alors sauvegarder ses données.
-						/*
-							Address=contacts[i].addresses[j].streetAddress;
-							Locality=contacts[i].addresses[j].locality;
-							Region=contacts[i].addresses[j].region;
-							PCode=contacts[i].addresses[j].postalCode;
-							Country=contacts[i].addresses[j].country;
-						*/
-							$("#listec").append(ligne);
-
-						}
-					}
-				}
-			
-		$("#divListC").scrollview({"direction":"y"});
-		$.mobile.changePage("#listeCt");
-		$('#listec').listview("refresh");
-
-	}
-/*
-function addC(contacts,variab) 
-{
-				dest=contacts[variab].addresses;
-				nom=contacts[variab].displayName;
-				if(dest!=null)
-					{
-						for (var j=0; j<dest.length; j++) 
-						{
-							Address=contacts[variab].addresses[j].streetAddress;
-							Locality=contacts[variab].addresses[j].locality;
-							Region=contacts[variab].addresses[j].region;
-							PCode=contacts[variab].addresses[j].postalCode;
-							Country=contacts[variab].addresses[j].country;
-						}
-					}
-
-	desti={};
-	desti["ligne1"]= nom;
-	desti["ligne2"]= Address;
-	desti["ligne3"]= Locality;
-	desti["ligne4"]= Region;
-	desti["ligne5"]= PCode;
-	desti["ligne6"]= Country;
-	num = $("#num").val() ;
-		   
-	if (num ==""){
-		carte.destinataires.push(desti);
-	}else{
-		carte.destinataires[num]=desti;
-	}
-	afficheListDest()
-}
-	*/
-
-    // onSuccess: Get a snapshot of the current contacts
-    //
-
-
-    // onError: Failed to get the contacts
-    //
-    function onError(contactError) {
-        alert('Error!');
-    }
-
-		</script>
+		
+		
+		<script src="build/json2.min.js"></script>
 		
 				<link rel="stylesheet" href="graphisme.css" />
 				<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
@@ -162,7 +51,7 @@ function addC(contacts,variab)
 				#hist .ui-icon { background:  url(images/btMesCartes.png) 100% 100% no-repeat; }
 				#panier .ui-icon { background:  url(images/btPanier.png) 100% 100% no-repeat; }
 			</style>
-			<div data-role="footer" class="nav-glyphish-example" data-theme="c">
+			<div data-role="footer" data-position="fixed" class="nav-glyphish-example" data-theme="c">
 				<div data-role="navbar" class="nav-glyphish-example" data-grid="a" >
 					<ul>
 						<li><a href="#" id="hist" data-icon="custom">Mon historique</a></li>
@@ -182,7 +71,7 @@ function addC(contacts,variab)
 
 				<div data-role="content">
 							<h1> <FONT FACE="Plume"> Support Client</font><img src="images/flechePourPack.png"/></h1>
-							<a href="#aide" data-transition="pop" data-role="button" data-theme="b">AIDE</a> 
+							<a href="Aide.html" data-transition="pop" data-role="button" data-theme="b">AIDE</a> 
 							<h1> <FONT FACE="Plume">  Mon compte </font><img src="images/flechePourPack.png"/></h1>
 							<a href="#compte" data-role="button" data-theme="b">DONNEES PERSONNELLES</a> 
 							<h1> <FONT FACE="Plume">  Condition generales </font><img src="images/flechePourPack.png"/></h1>
@@ -239,7 +128,7 @@ function addC(contacts,variab)
 				</ol>
 			</div>		
         
-		<div id="toolbarup" data-position="fixed" data-role="footer" > 
+		<div class="toolbardown" data-position="fixed" data-role="footer" > 
 			<img src="images/logoAvecTitre.png"/>
 		</div>	
 <!-- /header -->
@@ -419,7 +308,7 @@ function addC(contacts,variab)
 		
 		<div data-role="content" >
 			
-			<canvas id="canvaapercu" style="height: 217px;width:320px;" ></canvas>
+			<canvas id="canvaapercu" style="height: 203px;width:300px;" ></canvas>
       	 
 		</div>
 		
@@ -441,7 +330,7 @@ function addC(contacts,variab)
 			<textarea data-role='none' id="textMessage" style="font-family:desyrel; font-size:25px; border:3px solid black; WRAP='HARD';" cols=17 rows=6 ></textarea>
 			
 		</div>
-		<div id="toolbardown" data-position="fixed" data-role="footer" > 
+		<div class="toolbardown" data-position="fixed" data-role="footer" > 
 			<img src="images/logoAvecTitre.png"/>
 		</div>	
 	</div>
@@ -467,7 +356,7 @@ function addC(contacts,variab)
 		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="javascript:listDest();" >Poster <br>à 2,49 €</a></li>
+					<li><a href="#connexion" >Poster <br>à 2,49 €</a></li>
 					<li><a href="javascript:flipCarte();" >Envoyer <br>par Email</a></li>
 					<li><a href="javascript:flipCarte();" >Partager <br>sur  FaceBook</a></li>
 				</ul>
@@ -703,13 +592,13 @@ function addC(contacts,variab)
 											</select>
 											<br/>
 											<br/>
-				<a href="#message" data-transition="pop" data-role="button" data-theme="e"><img src="images/iconeTick.png" />VALIDER</a> 
+				<a href="javascript:listDest();" data-transition="pop" data-role="button" data-theme="e"><img src="images/iconeTick.png" />VALIDER</a> 
 				<br/>
 				<br/>
 				<p align="middle"><a href="#"> Mot de passe oublié?</a></p>
         </div><!-- /content -->
         
-        <div data-role="footer" data-position="fixed"  id="toolbardown2"> 
+        <div data-role="footer" data-position="fixed"  class="toolbardown2"> 
 		<br/>
 			<FONT color="black" FACE="Plume"> <h1> Vous n'avez pas de compte? </h1> </font>
 			<a href="#" data-role="button" data-theme="b">S'INSCRIRE</a>
@@ -732,13 +621,9 @@ function addC(contacts,variab)
 			</div>
 		</div>
 		
-		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="javascript:addPanier();" >Valider</a></li>
-				</ul>
-			</div>
-		</div>
+		<div id="toolbarup" data-position="fixed" data-role="footer" > 
+			<img src="images/logoAvecTitre.png"/>
+		</div>	
 	</div>
 
 	
