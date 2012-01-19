@@ -1,0 +1,40 @@
+	a {
+		text-decoration:none;
+	}
+	
+@font-face { 
+  font-family: 'Plume';
+  src: url(JennaSue.ttf);
+}
+@font-face { 
+  font-family: 'desyrel';
+  src: url(desyrel.ttf);
+}
+
+#toolbarup
+{
+	background: url(images/topBarFond.png); 
+	height: 46px;
+	text-align:center;
+	border:transparent; 
+}
+
+.corps
+{
+	background: url(images/fondBlancGrille.jpg); 
+}
+
+#toolbardown
+{
+	background: url(images/topBarFond.png); 
+	height: 47px;
+	text-align:center;
+	border:transparent; 
+}
+
+#toolbardown2
+{
+	background: url(images/fondPanierCF.png); 
+	text-align:center;
+	border:transparent; 
+}

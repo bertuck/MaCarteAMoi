@@ -1,0 +1,746 @@
+<!DOCTYPE HTML>
+		<html>
+			<head>
+				<title>Test Mobile</title>
+				<link rel="stylesheet"  href="jquery.mobile-1.0.min.css" />
+				
+				
+				<link rel="stylesheet" href="css/mcam.css" />
+				<link rel="stylesheet"  href="css/jquery.mobile.scrollview.css" />
+				<!--
+				<script src="jquery.js"></script>
+				<script src="jquery.mobile.themeswitcher.js"></script>
+				<script src="jqm-docs.js"></script>
+				<script src="jquery.mobile-1.0.min.js"></script>
+				
+				-->
+				<script src="js/jquery/jquery.min.js"></script>
+				<script src="js/jquery/jquery-ui.min.js"></script>
+				<script src="js/jquery/jcanvas.min.js"></script>
+				<script src="js/jquery/jquery.mobile.min.js"></script>
+				<script src="js/jquery/jquery.mobile.scrollview.js"></script>
+				<script src="js/jquery/jquery.fieldtag.min.js"></script>
+		<script src="js/base.js"></script>
+		<script src="js/rotate3Di.js"></script>
+		<script src="js/mcampg.js"></script>
+		<script src="js/dessin.js"></script>
+		
+		<!-- Signature -->
+		<link rel="stylesheet" href="build/jquery.signaturepad.css">
+		<script src="build/jquery.signaturepad.min.js"></script>
+		<script>
+			$(document).ready(function() {
+			  $('.sigPad').signaturePad();
+			});
+		</script>
+		<script src="build/json2.min.js"></script>
+		
+		<script type="text/javascript" charset="utf-8">
+
+		//Gestion de contact
+			 
+			function onBodyLoad()
+			{		
+				document.addEventListener("deviceready",onDeviceReady,false);
+			}
+			
+			function touchMove(event) {
+				event.preventDefault();
+			 }
+			 
+			 // contact
+			 
+    function onDeviceReady() {
+        // specify contact search criteria
+        var options = new ContactFindOptions();
+        options.filter="";          // empty search string returns all contacts
+        options.multiple=true;      // return multiple results
+        filter = ["displayName","addresses"];   // return contact.displayName field
+
+        // find contacts
+        navigator.contacts.find(filter, afficheListC, onError, options);
+
+    }
+
+
+	function afficheListC(contacts)
+	{
+				$("#listec").empty();
+		        for (var i=0; i<contacts.length; i++) 
+				{
+				dest=contacts[i].addresses;
+				nom=contacts[i].displayName;
+				if(dest!=null)
+					{
+						for (var j=0; j<dest.length; j++) 
+						{
+							variab=i;
+							ligne='<li> <a href="javascript:addC();"><h6>'+nom+'</h6></a></li>';
+// Si on a cliqué sur le "li" alors sauvegarder ses données.
+						/*
+							Address=contacts[i].addresses[j].streetAddress;
+							Locality=contacts[i].addresses[j].locality;
+							Region=contacts[i].addresses[j].region;
+							PCode=contacts[i].addresses[j].postalCode;
+							Country=contacts[i].addresses[j].country;
+						*/
+							$("#listec").append(ligne);
+
+						}
+					}
+				}
+			
+		$("#divListC").scrollview({"direction":"y"});
+		$.mobile.changePage("#listeCt");
+		$('#listec').listview("refresh");
+
+	}
+/*
+function addC(contacts,variab) 
+{
+				dest=contacts[variab].addresses;
+				nom=contacts[variab].displayName;
+				if(dest!=null)
+					{
+						for (var j=0; j<dest.length; j++) 
+						{
+							Address=contacts[variab].addresses[j].streetAddress;
+							Locality=contacts[variab].addresses[j].locality;
+							Region=contacts[variab].addresses[j].region;
+							PCode=contacts[variab].addresses[j].postalCode;
+							Country=contacts[variab].addresses[j].country;
+						}
+					}
+
+	desti={};
+	desti["ligne1"]= nom;
+	desti["ligne2"]= Address;
+	desti["ligne3"]= Locality;
+	desti["ligne4"]= Region;
+	desti["ligne5"]= PCode;
+	desti["ligne6"]= Country;
+	num = $("#num").val() ;
+		   
+	if (num ==""){
+		carte.destinataires.push(desti);
+	}else{
+		carte.destinataires[num]=desti;
+	}
+	afficheListDest()
+}
+	*/
+
+    // onSuccess: Get a snapshot of the current contacts
+    //
+
+
+    // onError: Failed to get the contacts
+    //
+    function onError(contactError) {
+        alert('Error!');
+    }
+
+		</script>
+		
+				<link rel="stylesheet" href="graphisme.css" />
+				<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
+
+			</head>
+			<body >
+			<!-- Menu -->
+	<div data-role="page" id="menu" class="corps">
+			<div data-backbtn="false"  id="toolbarup" data-role="header" > 
+				<img src="images/logoAvecTitre.png"/>
+				<a href="#menu1" data-icon="info" data-iconpos="notext"class="ui-btn-left" data-theme="c">Aide</a>
+				<a href="#" data-theme="c" class="ui-btn-right">Mes credits</a>
+			</div>	
+				<a href="#" onclick="getPhoto();"><img src="images/envoiRapide.png" style="float:left;"></a>
+				<a href="#" onclick="getPhotoAlbum();"><img src="images/envoiPerso.png" style="float:left;"></a>
+			<style>	
+				.nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 81px !important; }
+				.nav-glyphish-example .ui-btn .ui-icon { width: 60px!important; height: 60px!important; margin-left: -35px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important;}
+				#hist .ui-icon { background:  url(images/btMesCartes.png) 100% 100% no-repeat; }
+				#panier .ui-icon { background:  url(images/btPanier.png) 100% 100% no-repeat; }
+			</style>
+			<div data-role="footer" class="nav-glyphish-example" data-theme="c">
+				<div data-role="navbar" class="nav-glyphish-example" data-grid="a" >
+					<ul>
+						<li><a href="#" id="hist" data-icon="custom">Mon historique</a></li>
+						<li><a href="javascript:onBodyLoad();" id="panier" data-icon="custom">Mon panier</a></li>
+					</ul>
+				</div>
+			</div>
+	</div>				
+	
+	
+	
+		<div data-role="page" id="menu1" class="corps">
+			<div  data-backbtn="false"  id="toolbarup" data-role="header" > 
+				<p>Informations</p>
+				<a href="test.html" data-theme="c" class="ui-btn-right" data-direction="reverse">Retour</a>
+			</div>	
+
+				<div data-role="content">
+							<h1> <FONT FACE="Plume"> Support Client</font><img src="images/flechePourPack.png"/></h1>
+							<a href="#aide" data-transition="pop" data-role="button" data-theme="b">AIDE</a> 
+							<h1> <FONT FACE="Plume">  Mon compte </font><img src="images/flechePourPack.png"/></h1>
+							<a href="#compte" data-role="button" data-theme="b">DONNEES PERSONNELLES</a> 
+							<h1> <FONT FACE="Plume">  Condition generales </font><img src="images/flechePourPack.png"/></h1>
+							<a href="#cgu" data-role="button" data-theme="b">CGU</a> 
+							<a href="#mention" data-role="button" data-theme="b">MENTIONS LEGALES</a> 
+							<a href="#tarif" data-role="button" data-theme="b">TARIFS EN VIGUEUR</a> 
+							<h1> <FONT FACE="Plume">  Autres Applications </font><img src="images/flechePourPack.png"/></h1>
+							<a href="#" data-role="button" data-theme="e">APPLICATIONS LA POSTE</a> 
+							<p>  Version 2.1 </p>
+				</div>
+
+		
+	</div> 
+		
+<!-- formu -->
+    <div data-role="page" id="compte" class="corps">
+
+        <div data-backbtn="false"  id="toolbarup" data-role="header" > 
+				<p>Aide</p>
+				<a href="#menu1" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+
+        <div data-role="content" > 
+                <form>
+                Nom:<INPUT type=text name="nom" placeholder="Entrez votre nom" required/>
+                Prenom:<INPUT type=text name="prenom" placeholder="Entrez votre prenom" required/>
+				Mot de passe:<INPUT type=password name="pass" placeholder="Saisissez un mot de passe" required/>
+				Téléphone:<INPUT type=text name="tel" placeholder="Entrez votre numéro de téléphone" required/>
+				Adresse mail:<INPUT type=text name="mail" placeholder="Entrez votre adresse mail" required/>
+				</br>
+				<input type="submit" value="Envoyer"/>
+                </form> 
+        </div><!-- /content -->
+        
+        <div data-role="footer" data-theme="c"> 
+			<h4>Ta-da</h4> 
+		</div> 
+<!-- /header -->
+</div><!-- /page --> 
+
+<!-- aide -->
+    <div data-role="page" id="aide" class="corps">
+
+        <div data-backbtn="false"  id="toolbarup" data-role="header" > 
+				<p>Aide</p>
+				<a href="#menu1" data-theme="c" class="ui-btn-right">Retour</a>
+		</div>	
+			<div data-role="content">
+				<ol data-role="listview" data-filter="true" >
+						<li data-role="none" class="corps"><a href="test.html#help">Comment créer envoyer votre carte postale ?</a></li>
+						<li data-role="none" class="corps"><a href="#">Quels sont les différents modes d'envoi de vos cartes ?</a></li>
+						<li data-role="none" class="corps"><a href="#">Qu'est que les CG ?</a></li>
+						<li data-role="none" class="corps"><a href="#">Quelles sont les conditions necessaires à l'envoi de cartes electroniques MaCartamoi ?</a></li>
+				</ol>
+			</div>		
+        
+		<div id="toolbarup" data-position="fixed" data-role="footer" > 
+			<img src="images/logoAvecTitre.png"/>
+		</div>	
+<!-- /header -->
+</div><!-- /page --> 
+		
+		
+<!-- cgu -->
+    <div data-role="page" id="cgu" class="corps">
+
+        <div data-backbtn="false" id="toolbarup" data-role="header" > 
+				<p>CGU</p>
+				<a href="#menu1" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+			<ul data-role="listview">
+					<li data-role="none" data-theme="e">Conditions générales du services MaCartaMoi</li>
+			</ul>
+			        <div data-role="content">
+					Ceci est un test
+					</div>		
+			
+			
+        
+			<div id="toolbarup" data-position="fixed" data-role="footer" > 
+				<img src="images/logoAvecTitre.png"/>
+			</div>	
+</div>
+
+
+<!-- Mention -->
+    <div data-role="page" id="mention" class="corps">
+
+       <div data-backbtn="false"  id="toolbarup" data-role="header" > 
+				<p>Mentions légales</p>
+				<a href="#menu1" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+			<ul data-role="listview">
+					<li data-role="none" data-theme="e">La Poste</li>
+			</ul>
+			        <div data-role="content" >
+					<p>Société anonyme</p>
+
+					<p>au capital de 3 400 00 000€</p>
+
+					<p>356 000 000 RCS Paris</p>
+
+					<p>Siége social : 44 boulevard Vaugirard, 75 757 Paris Cedex 15</p>
+
+					<p>Tél : 01 55 44 00 00</p>
+
+					<p>Dirécteur de la publication: Vincent Relave</p>
+					
+					<p> <b>Le présent site est hébergé par:</b></p>
+					
+					<p>SARL ASPSERVEUR au capital de 100 000.00 Euros <br/>
+					Siége Social : 785 voie Antiope, ZA Athélia III, 13600 - La Ciotat.<br/>
+					RCS Marseille 451 777 254 APE 6311Z<br/>
+					Gérant : M. MUTEL Stéphane<br/>
+					Email : <a href="#">s.mutel@aspserveur.com</a></p>
+					</div>		
+			
+			<div id="toolbarup" data-role="footer" > 
+				<img src="images/logoAvecTitre.png"/>
+			</div>	
+</div>
+
+<!-- tarif -->
+<div data-role="page" id="tarif" class="corps">
+
+        <div data-backbtn="false"  id="toolbarup" data-role="header" > 
+				<p>Tarifs</p>
+				<a href="#menu1" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>
+			        <div data-role="content">
+					<b>Achat d'une carte postale à l'acte</b>
+					<table>
+					<tr>
+					<td>Pour la France</td> <td> 2,49€</td>
+					</tr>
+					<tr>
+					<td>Pour les DOM TOM </td><td>2,49€</td>
+					</tr>
+					<tr>
+					<td>Pour les pays d'Europe et la Suisse</td><td> 2,66€</td>
+					</tr>
+					<tr>
+					<td>Pour l'international </td><td>2,78€</td>
+					</tr>
+					</table>
+					<br/>
+					<b>Achat de packs de cartes postales:</b>
+					<table>
+					<tr>
+					<td>Pack de 5 crédits </td><td>10,90€</td>
+					</tr>
+					<tr>
+					<td>Pack de 10 crédits </td><td>19,90€</td>
+					</tr>
+					<tr>
+					<td>Pack de 15 crédits </td><td>27,90€</td>
+					</tr>
+					<tr>
+					<td>Pack de 20 crédits </td><td>35,90€</td>
+					</tr>
+					</table>
+					</div>		
+			
+			
+        
+			<div id="toolbarup" data-position="fixed" data-role="footer" > 
+				<img src="images/logoAvecTitre.png"/>
+			</div>	
+</div>
+
+<!-- Aide1 -->
+    <div data-backbtn="false"  data-role="page" id="help" class="corps">
+
+        <div id="toolbarup" data-role="header" > 
+				<p>Aide</p>
+				<a href="test.html#aide" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+			<ul data-role="listview">
+					<li data-role="none" data-theme="e">1. Comment créer et envoyer votre carte postale ?</li>
+			</ul>
+			        <div data-role="content" >
+					Ceci est un test
+					</div>		
+			
+			
+        
+			<div id="toolbarup" data-position="fixed" data-role="footer" > 
+				<img src="images/logoAvecTitre.png"/>
+			</div>	
+</div>
+
+
+	<div data-role="page" id="PersoCarte" ontouchmove="touchMove(event);" class="corps">
+		<div data-backbtn="false"  id="toolbarup" data-role="header" > 
+				<a href="javascript:voirapercu();" data-theme="e" class="ui-btn-right" >valider</a>
+				<p>Personnalisé</p>
+				<a href="test.html" data-theme="c" class="ui-btn-left">Retour</a>
+		</div>	
+		
+		<div data-role="content" style="margin:0; padding:0; border:0;width:100%;">
+			
+			<canvas id="mycanvas" style="height: 217px;width:320px;" ></canvas>
+      	 
+			<div id="scroller" class="threeByThree">
+				<div class="square"><a href="javascript:drawCarte('');"><img src="images/skin00.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin01.png');"><img src="images/skin01.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin02.png');"><img src="images/skin02.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin03.png');"><img src="images/skin03.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin04.png');"><img src="images/skin04.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin05.png');"><img src="images/skin05.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin06.png');"><img src="images/skin06.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin07.png');"><img src="images/skin07.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin08.png');"><img src="images/skin08.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin09.png');"><img src="images/skin09.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin10.png');"><img src="images/skin10.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin11.png');"><img src="images/skin11.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin12.png');"><img src="images/skin12.png" width="90" height="65" /></a></div>
+				<div class="square"><a href="javascript:drawCarte('images/skin13.png');"><img src="images/skin13.png" width="90" height="65" /></a></div>
+			</div>
+		</div>
+		<div id="toolbarup" data-position="fixed" data-role="footer" > 
+			<img src="images/logoAvecTitre.png"/>
+		</div>	
+	</div>
+	
+	
+	
+		<div data-role="page" id="apercu" ontouchmove="touchMove(event);" class="corps">
+		<div id="toolbarup" data-role="header" > 
+				<a href="javascript:Validation();" data-theme="e" class="ui-btn-right" >valider</a>
+				<p>Aperçu</p>
+				<a href="#PersoCarte" data-theme="c" class="ui-btn-left">Retour</a>
+		</div>	
+		
+		<div data-role="content" >
+			
+			<canvas id="canvaapercu" style="height: 217px;width:320px;" ></canvas>
+      	 
+		</div>
+		
+		<div id="toolbarup" data-position="fixed" data-role="footer" > 
+			<img src="images/logoAvecTitre.png"/>
+		</div>	
+	</div>
+	
+	
+	<div data-role="page" id="message" ontouchmove="touchMove(event);" class="corps">
+		<div id="toolbarup" data-role="header" > 
+		<a href="#signature" data-theme="e" class="ui-btn-right" >valider</a>
+		<p>Message</p>
+		<a href="#apercu" data-theme="c" class="ui-btn-left">Retour</a>
+		</div>
+		
+		<div data-role="content">
+			
+			<textarea data-role='none' id="textMessage" style="font-family:desyrel; font-size:25px; border:3px solid black; WRAP='HARD';" cols=17 rows=6 ></textarea>
+			
+		</div>
+		<div id="toolbardown" data-position="fixed" data-role="footer" > 
+			<img src="images/logoAvecTitre.png"/>
+		</div>	
+	</div>
+	
+	
+	<div data-role="page" id="Preview" ontouchmove="touchMove(event);" class="corps">
+		<div id="toolbarup" data-role="header" > 
+				<p>Visualisation</p>
+				<a href="#signature" data-theme="c" class="ui-btn-left">Retour</a>
+		</div>	
+		
+		<div data-role="content" style="margin:0; padding:0; border:0;width:100%;">
+			<div style="height:50px; width: 100%"></div>
+			<div id="flipbox" onclick="flipCarte();" style="height:400px; width: 280px;margin:10px">
+				<div id="recto">
+				</div>
+				<div id="verso">
+					<canvas id="canvapreview" style="height: 217px;width:320px;" ></canvas>
+				</div>
+			</div>
+		</div>
+		
+		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="javascript:listDest();" >Poster <br>à 2,49 €</a></li>
+					<li><a href="javascript:flipCarte();" >Envoyer <br>par Email</a></li>
+					<li><a href="javascript:flipCarte();" >Partager <br>sur  FaceBook</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div data-role="page" id="signature" ontouchmove="touchMove(event);" class="corps">
+		<div id="toolbarup" data-role="header" > 
+				<p>signature</p>
+				<a href="#message" data-theme="c" class="ui-btn-left">Retour</a>
+		</div>	
+		<!--
+		<div data-role="content" style="margin:0; padding:0; border:0;width:100%;">
+			
+			<canvas id="canvasSig" style="height: 217px;width:320px;" ></canvas>
+			
+		</div>
+		-->
+	<div data-role="content">
+	<br/>
+		<div class="sigPad">
+			<h1><FONT FACE="Plume"> Votre nom</FONT><img src="images/flechePourPack.png"/></h1>
+			<input type="text" name="name" id="name" class="name">
+			<h1><FONT FACE="Plume"> Signature Facultative</FONT><img src="images/flechePourPack.png"/></h1>
+			<ul class="sigNav">
+			  <li class="typeIt"><a href="#type-it" class="current">En Ecrit</a></li>
+			  <li class="drawIt"><a href="#draw-it" >En Dessin</a></li>
+			  <li class="clearButton"><a href="#clear">Effacer</a></li>
+			</ul>
+				<div class="sig sigWrapper" >
+				  <div class="typed" ></div>
+				  <canvas class="pad" width="300" height="100" ></canvas>
+				  <input type="hidden" name="output" class="output">
+				</div>
+		</div>
+			
+	</div>
+  
+  
+		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="javascript:preview(false);" >Pas de signature</a></li>
+					<li><a href="javascript:preview(true);"   >valider</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div data-role="page" id="Destinataire" ontouchmove="touchMove(event);" class="corps">
+		<div id="toolbarup" data-role="header" > 
+				<p>Destinataire</p>
+				<a href="#preview" data-theme="c" class="ui-btn-left">Retour</a>
+		</div>	
+		
+		<div data-role="content" class="corps">
+			 <div data-role="fieldcontain">
+				<a href="javascript:onDeviceReady()" data-role="button" data-icon="plus" data-iconpos="right">Choisir dans le carnet d'adresse</a>
+				<form id="fieldContent1" >
+					<input type="hidden" id="num" />
+					<input type="text" id="ligne1" title="Civilité Nom Prénom"  />	
+					<input type="text" id="ligne2" title="Appartement, Bâtiment"  />
+					<input type="text" id="ligne3" title="N° et rue"  />
+					<input type="text" id="ligne4" title="Lieu dit, BP"  />
+					<input type="text" id="ligne5" title="Code postal, Ville"  />
+					<select name="ligne6" id="ligne6">
+						<option value="FR">France</option>
+						<option value="ES">Espagne</option>
+					</select>
+				</form>
+			</div>
+		</div>
+		
+		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="javascript:addDest();" >Valider</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	 
+	 <div data-role="page" id="listeDestinataires" ontouchmove="touchMove(event);" class="corps">
+			<div id="toolbarup" data-role="header" > 
+			 <h1>Les destinataires</h1>
+			<a href="#preview" data-theme="c" class="ui-btn-left">Retour</a>
+		</div>
+		<a href="javascript:detailDest();" data-role="button" data-icon="plus" data-iconpos="right">Ajouter un destinataire</a>
+		<div data-role="content" >
+			<div id="divListDest" style="height:240px;width:280px;">
+				<ul data-role="listview" data-theme="d" id="listedest" data-inset="true"> <!-- Rajouter bouton supprimer -->
+				</ul>
+			</div>
+		</div>
+		
+		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="javascript:addPanier();" >Valider</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	 
+	 
+	 
+	 
+	 <div data-role="page" id="panier" ontouchmove="touchMove(event);" class="corps" >
+				<div id="toolbarup" data-role="header" > 
+					 <h1>Mon panier</h1>
+					<a href="#listeDestinataires" data-theme="c" class="ui-btn-left">Retour</a>
+				</div>
+		
+				<div data-backbtn="false" data-theme="c"  data-role="header" style="background-image:url('images/fondRecapCompte.png');"> 
+						<h3>Vous ne disposez pas de crédit <a href="#" data-theme="c" class="ui-btn-right" data-role="button"> + DE CREDITS </a></h3>
+				</div>
+				<div data-role="content">
+					<ul data-role="listview">
+								<li data-role="none" class="corps"><p>PRIX TOTAL: <b>2,49€</b> (1 carte)</p></li>
+								<li data-role="none" class="corps">
+											Code promo
+											<select name="slider" id="flip-d" data-role="slider" data-theme="c">
+												<option value="no">O</option>
+												<option value="yes">|</option>
+											</select>
+								</li>
+								<li data-role="none" class="corps"><href="javascript:validerPanier();" data-theme="e" data-role="button">PAYER MES 2 CARTES MAINTENANT</a></li>
+								<li data-role="none" class="corps"><href="javascript:detailDest();" data-theme="b" data-role="button">AJOUTER UNE CARTE</a></li>
+								</li>
+					</ul>
+				</div>
+				
+			<div data-role="footer" data-theme="c" data-position="fixed" >
+				<div data-role="navbar">
+					<p><img src="images/iconePanier.png"/>1 carte dans mon panier</p>
+						<div id="scroller2" class="threeByThree" >
+									<div class="square" data-icon="delete"><a href="#"><canvas id="canvaapercu2" width="90" height="65"> </canvas></a></div>
+									<div class="square"><a href="#"><img src="images/skin01.png" width="90" height="65" /></a></div>
+									<div class="square"><a href="#"><img src="images/skin02.png" width="90" height="65" /></a></div>
+									<div class="square"><a href="#"><img src="images/skin02.png" width="90" height="65" /></a></div>
+						</div>
+				</div>
+			</div>
+			
+								
+	</div>
+			<!--
+					<div id="divListDest" style="height:240px;width:280px;">
+						<ul data-role="listview" data-theme="g" id="listePanier" style="height:240px;width:280px;">
+						</ul>
+					</div>
+		
+		
+			<div data-role="footer" class="ui-bar" data-id="mcam" data-theme="c">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="javascript:validerPanier();" >Valider</a></li>
+					</ul>
+				</div>
+			</div>
+			
+		-->
+		
+		
+				
+
+
+				
+	 
+	 <div data-role="page" id="cartePoste" ontouchmove="touchMove(event);" class="corps">
+		<div id="toolbarup" data-role="header" > 
+			<h1>carte POSTE</h1>
+			<a href="#panier" data-theme="c" class="ui-btn-left">Retour</a>
+		</div>
+		
+		<div data-role="content" style="margin:0; padding:0; border:0;width:100%;">
+				
+      	 
+			<div id="scrollerPoste" class="contentPoste">
+				<div class="poste"><a href="javascript:carteposteChoix('photo/01.jpg');"><img src="photo/01.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/02.jpg');"><img src="photo/02.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/03.jpg');"><img src="photo/03.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/04.jpg');"><img src="photo/04.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/05.jpg');"><img src="photo/05.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/06.jpg');"><img src="photo/06.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/07.jpg');"><img src="photo/07.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/08.jpg');"><img src="photo/08.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/09.jpg');"><img src="photo/09.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/10.jpg');"><img src="photo/10.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/01.jpg');"><img src="photo/01.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/02.jpg');"><img src="photo/02.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/03.jpg');"><img src="photo/03.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/04.jpg');"><img src="photo/04.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/05.jpg');"><img src="photo/05.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/06.jpg');"><img src="photo/06.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/07.jpg');"><img src="photo/07.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/08.jpg');"><img src="photo/08.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/09.jpg');"><img src="photo/09.jpg" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/10.jpg');"><img src="photo/10.jpg" width="195" height="143" /></a></div>
+				
+			</div>
+		</div>
+		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="message" >valider</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	
+	<!-- formu -->
+    <div data-role="page" id="connexion" class="corps">
+
+        <div data-backbtn="false"  id="toolbarup" data-role="header" > 
+				<p>Connexion</p>
+				<a href="#apercu" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+
+        <div data-role="content" >
+				Pour accéder à votre compte et utiliser vos crédits, merci de vous identifier:
+                <INPUT type=text name="nom" placeholder="Entrez votre mail" required/>
+				<INPUT type=password name="pass" placeholder="Saisissez un mot de passe" required/>
+				<br/>
+				<br/>
+				Se souvenir de moi
+				<select name="slider" id="flip-d" data-role="slider" data-theme="c">
+												<option value="no">O</option>
+												<option value="yes">|</option>
+											</select>
+											<br/>
+											<br/>
+				<a href="#message" data-transition="pop" data-role="button" data-theme="e"><img src="images/iconeTick.png" />VALIDER</a> 
+				<br/>
+				<br/>
+				<p align="middle"><a href="#"> Mot de passe oublié?</a></p>
+        </div><!-- /content -->
+        
+        <div data-role="footer" data-position="fixed"  id="toolbardown2"> 
+		<br/>
+			<FONT color="black" FACE="Plume"> <h1> Vous n'avez pas de compte? </h1> </font>
+			<a href="#" data-role="button" data-theme="b">S'INSCRIRE</a>
+		</div> 
+<!-- /header -->
+</div>
+<!-- /page --> 	
+
+
+ <div data-role="page" id="listeCt" ontouchmove="touchMove(event);" class="corps">
+			<div id="toolbarup" data-role="header" > 
+			 <h1>Contact</h1>
+			<a href="#preview" data-theme="c" class="ui-btn-left">Retour</a>
+		</div>
+		
+		<div data-role="content" >
+			<div id="divListC" style="height:300px;width:280px;">
+				<ul data-role="listview" data-filter="true" data-theme="d" id="listec" data-inset="true"> 
+				</ul>
+			</div>
+		</div>
+		
+		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="javascript:addPanier();" >Valider</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	
+			</body>
+		</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+		<html>
+			<head>
+				<title>Test Mobile</title>
+				<link rel="stylesheet"  href="jquery.mobile-1.0.min.css" />
+				<script src="jquery.js"></script>
+				<script src="jquery.mobile.themeswitcher.js"></script>
+				<script src="jqm-docs.js"></script>
+				<script src="jquery.mobile-1.0.min.js"></script>
+				<link rel="stylesheet" href="graphisme.css" />
+				<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
+			</head>
+			<body>
+<!-- Menu -->
+			
+	<div data-role="page" id="menu" >
+		<div id="corps" >
+			<div id="toolbarup" data-role="header" > 
+				<p>Informations</p>
+				<a href="test.html" data-theme="c" class="ui-btn-right" data-direction="reverse">Retour</a>
+			</div>	
+
+				<div data-role="content">
+							<p> Support Client<img src="images/flechePourPack.png"/></p>
+							<a href="Aide.html#aide" data-transition="pop" data-role="button" data-theme="b">AIDE</a> 
+							<p> Mon compte <img src="images/flechePourPack.png"/></p>
+							<a href="#compte" data-role="button" data-theme="b">DONNEES PERSONNELLES</a> 
+							<p> Condition generales <img src="images/flechePourPack.png"/></p>
+							<a href="#cgu" data-role="button" data-theme="b">CGU</a> 
+							<a href="#mention" data-role="button" data-theme="b">MENTIONS LEGALES</a> 
+							<a href="#tarif" data-role="button" data-theme="b">TARIFS EN VIGUEUR</a> 
+							<p> Autres Applications <img src="images/flechePourPack.png"/></p>
+							<a href="#" data-role="button" data-theme="e">APPLICATIONS LA POSTE</a> 
+							<p> Version 2.1 </p>
+				</div>
+				
+		</div> 
+		
+	</div> 
+		
+<!-- formu -->
+    <div data-role="page" id="compte">
+
+        <div id="toolbarup" data-role="header" > 
+				<p>Aide</p>
+				<a href="Aide.html" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+
+        <div data-role="content" id="corps"> 
+                <form>
+                Nom:<INPUT type=text name="nom" placeholder="Entrez votre nom" required/>
+                Prenom:<INPUT type=text name="prenom" placeholder="Entrez votre prenom" required/>
+				Mot de passe:<INPUT type=password name="pass" placeholder="Saisissez un mot de passe" required/>
+				Telephone:<INPUT type=text name="prenom" placeholder="Entrez votre numéro de téléphone" required/>
+				Adresse mail:<INPUT type=text name="mail" placeholder="Entrez votre adresse mail" required/>
+				</br>
+				<input type="submit" value="Envoyer"/>
+                </form> 
+        </div><!-- /content -->
+        
+        <div data-role="footer" data-theme="c"> 
+			<h4>Ta-da</h4> 
+		</div> 
+<!-- /header -->
+</div><!-- /page --> 
+
+<!-- aide -->
+    <div data-role="page" id="aide" >
+
+        <div id="toolbarup" data-role="header" > 
+				<p>Aide</p>
+				<a href="Aide.html" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+			<ol data-role="listview" data-filter="true">
+					<li data-role="none"><a href="#">Comment créer envoyer votre carte postale ?</a></li>
+					<li data-role="none"><a href="#">Quels sont les différents modes d'envoi de vos cartes ?</a></li>
+					<li data-role="none"><a href="#">Qu'est que les CG ?</a></li>
+					<li data-role="none"><a href="#">Quelles sont les conditions necessaires à l'envoi de cartes electroniques MaCartamoi ?</a></li>
+			</ol>
+			        <div data-role="content" id="corps">
+					
+					</div>		
+			
+			
+        
+			<div id="toolbarup" data-role="footer" > 
+				<img src="images/logoAvecTitre.png"/>
+			</div>	
+<!-- /header -->
+</div><!-- /page --> 
+		
+		
+<!-- cgu -->
+    <div data-role="page" id="cgu">
+
+        <div id="toolbarup" data-role="header" > 
+				<p>CGU</p>
+				<a href="Aide.html" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+			<ul data-role="listview">
+					<li data-role="none" data-theme="e">Conditions générales du services MaCartaMoi</li>
+			</ul>
+			        <div data-role="content" id="corps">
+					Ceci est un test
+					</div>		
+			
+			
+        
+			<div id="toolbarup" data-role="footer" > 
+				<img src="images/logoAvecTitre.png"/>
+			</div>	
+</div>
+
+
+<!-- Mention -->
+    <div data-role="page" id="mention">
+
+       <div id="toolbarup" data-role="header" > 
+				<p>Mentions légales</p>
+				<a href="Aide.html" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+			<ul data-role="listview">
+					<li data-role="none" data-theme="e">La Poste</li>
+			</ul>
+			        <div data-role="content" id="corps">
+					<p>Société anonyme</p>
+
+					<p>au capital de 3 400 00 000€</p>
+
+					<p>356 000 000 RCS Paris</p>
+
+					<p>Siége social : 44 boulevard Vaugirard, 75 757 Paris Cedex 15</p>
+
+					<p>Tél : 01 55 44 00 00</p>
+
+					<p>Dirécteur de la publication: Vincent Relave</p>
+					
+					<p> Le présent site est hébergé par:</p>
+					
+					<p>SARL ASPSERVEUR au capital de 100 000.00 Euros <br/>
+					Siége Social : 785 voie Antiope, ZA Athélia III, 13600 - La Ciotat.<br/>
+					RCS Marseille 451 777 254 APE 6311Z<br/>
+					Gérant : M. MUTEL Stéphane<br/>
+					Email : <a href="#">s.mutel@aspserveur.com</a></p>
+					</div>		
+			
+			<div id="toolbarup" data-role="footer" > 
+				<img src="images/logoAvecTitre.png"/>
+			</div>	
+</div>
+
+<!-- tarif -->
+<div data-role="page" id="tarif">
+
+        <div id="toolbarup" data-role="header" > 
+				<p>Tarifs</p>
+				<a href="Aide.html" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>
+			        <div data-role="content" id="corps">
+					Achat d'une carte postale à l'acte
+					<table>
+					<tr>
+					<td>Pour la France</td> <td> 2,49€</td>
+					</tr>
+					<tr>
+					<td>Pour les DOM TOM </td><td>2,49€</td>
+					</tr>
+					<tr>
+					<td>Pour les pays d'Europe et la Suisse</td><td> 2,66€</td>
+					</tr>
+					<tr>
+					<td>Pour l'international </td><td>2,78€</td>
+					</tr>
+					</table>
+					<br/>
+					Achat de packs de cartes postales:
+					<table>
+					<tr>
+					<td>Pack de 5 crédits </td><td>10,90€</td>
+					</tr>
+					<tr>
+					<td>Pack de 10 crédits </td><td>19,90€</td>
+					</tr>
+					<tr>
+					<td>Pack de 15 crédits </td><td>27,90€</td>
+					</tr>
+					<tr>
+					<td>Pack de 20 crédits </td><td>35,90€</td>
+					</tr>
+					</table>
+					</div>		
+			
+			
+        
+			<div id="toolbarup" data-role="footer" > 
+				<img src="images/logoAvecTitre.png"/>
+			</div>	
+</div>
+
+			</body>
+		</html>

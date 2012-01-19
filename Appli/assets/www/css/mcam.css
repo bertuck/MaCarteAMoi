@@ -1,0 +1,104 @@
+* {
+    margin:0;
+    padding:0;
+    border:0;
+}
+
+
+.ui-page {
+		background: #7799cc;
+	}
+    
+.fondPage {
+color:black;
+background-color:#; !important
+}
+
+.celluleGrid {
+    position: relative;
+    height:95px;
+    
+}
+.iconLarge {
+    position: relative;
+    float: left;
+    margin: 10px;
+    left: 20px;
+    top: 5px;
+    height: 90px;
+    width: 110px;
+    -webkit-box-shadow: 1px 1px 13px #999;
+    -webkit-border-radius: 8px; 
+}
+
+.iconLargeImage {
+    position: absolute;
+    left: 25px;
+    top: 10px;
+    height: 40px;
+    width: 60px;
+    -webkit-box-shadow: 1px 1px 13px #999;
+    -webkit-border-radius: 8px; 
+}
+.iconLargeText {
+    position: absolute;
+    bottom:3px;
+    width: 110px;
+    text-align: center;
+    -webkit-box-shadow: 1px 1px 13px #999;
+    -webkit-border-radius: 8px;
+}
+
+.poste {
+    width: 300px;
+    height: 150px;
+    padding: 3px;
+    font-size: 60px;
+    text-align: center;
+}
+.contentPoste{
+    border: solid 1px black;
+    background-color: white;
+    overflow: hidden;
+    width: 320px;
+    height: 400px;
+}
+.square {
+    width: 96px;
+    height: 71px;
+    padding: 3px;
+    font-size: 60px;
+    text-align: center;
+}
+
+.threeByThree {
+    border: solid 1px black;
+    background-color: white;
+    overflow: hidden;
+    width: 320px;
+    height: 77px;
+}
+.threeByThree > .ui-scrollview-view {
+    width: 1300px;
+    background-color: white;
+}
+.threeByThree .square {
+    float: left;
+}
+
+.demo{
+    width:800px;
+    height:220px;
+    padding-top:10px;
+    margin:0 auto;
+    border-bottom: 3px solid #ABDC28;
+}
+.demo h1{
+    color:#fff;
+    float:left;
+    margin:5px 30px 0px 0px;
+}
+
+.markedClass{
+    color:#999999;
+}
