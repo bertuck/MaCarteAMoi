@@ -68,7 +68,9 @@ function getPictureSuccess(imageUri) {
 								 y: 0,
 								 height: 150,
 								 width: 300,
-								  fromCenter: false})
+								  fromCenter: false});
+		Canvas2Image.saveAsPNG($("#mycanvas"));
+								
 	}catch(err){
 		alert(err);
 	}
