@@ -3,8 +3,6 @@
 			<head>
 				<title>Test Mobile</title>
 				<link rel="stylesheet"  href="jquery.mobile-1.0.min.css" />
-				
-				
 				<link rel="stylesheet" href="css/mcam.css" />
 				<link rel="stylesheet"  href="css/jquery.mobile.scrollview.css" />
 				<script src="js/canvastoimage.js"></script>
@@ -18,24 +16,10 @@
 				<script src="js/rotate3Di.js"></script>
 				<script src="js/mimic.js"></script>
 				<script src="js/mcampg.js"></script>
-		<!--<script src="js/dessin.js"></script>-->
-		
-		<!-- Signature -->
-		<link rel="stylesheet" href="build/jquery.signaturepad.css">
-		<script src="build/jquery.signaturepad.min.js"></script>
-		<script>
-			$(document).ready(function() {
-			  $('.sigPad').signaturePad();
-			});
-		</script>
-		
-		
-		
-		<script src="build/json2.min.js"></script>
-		
+				<script src="js/dessin.js"></script>
+				<script src="build/json2.min.js"></script>
 				<link rel="stylesheet" href="graphisme.css" />
 				<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
-
 			</head>
 			<body >
 			<!-- Menu -->
@@ -59,12 +43,11 @@
 				<div data-role="navbar" class="nav-glyphish-example" data-grid="a" >
 					<ul>
 						<li><a href="#" id="hist" data-icon="custom">Mon historique</a></li>
-						<li><a href="javascript:onBodyLoad();" id="panier" data-icon="custom">Mon panier</a></li>
+						<li><a href="#" id="panier" data-icon="custom">Mon panier</a></li>
 					</ul>
 				</div>
 			</div>
-	</div>				
-	
+	</div>
 	
 	
 		<div data-role="page" id="menu1" class="corps">
@@ -279,12 +262,12 @@
 				<a href="test.html" data-theme="c" class="ui-btn-left">Retour</a>
 		</div>	
 		
-		<div data-role="content" style="margin:0; padding:0; border:0;width:100%;">
+		<div data-role="content" style="text-align:center; width:85%;">
 			
 			<canvas id="mycanvas" style="height: 217px;width:320px;" ></canvas>
       	 
-			<div id="scroller" class="threeByThree">
-				<div class="square"><a href="javascript:drawCarte('');"><img src="images/skin00.png" width="90" height="65" /></a></div>
+			<div id="scroller" class="threeByThree" >
+				<div class="square" ><a href="javascript:drawCarte('');"><img src="images/skin00.png" width="90" height="65" /></a></div>
 				<div class="square"><a href="javascript:drawCarte('images/skin01.png');"><img src="images/skin01.png" width="90" height="65" /></a></div>
 				<div class="square"><a href="javascript:drawCarte('images/skin02.png');"><img src="images/skin02.png" width="90" height="65" /></a></div>
 				<div class="square"><a href="javascript:drawCarte('images/skin03.png');"><img src="images/skin03.png" width="90" height="65" /></a></div>
@@ -310,7 +293,7 @@
 		<div data-role="page" id="apercu" ontouchmove="touchMove(event);" class="corps">
 		<div id="toolbarup" data-role="header" > 
 				<a href="javascript:Validation();" data-theme="e" class="ui-btn-right" >valider</a>
-				<div id="textbarup" data-role="header" > 
+				<div id="textbarup"> 
 					<p>Aperçu</p>
 				</div>
 				<a href="#PersoCarte" data-theme="c" class="ui-btn-left">Retour</a>
@@ -330,7 +313,8 @@
 	
 	<div data-role="page" id="message" ontouchmove="touchMove(event);" class="corps">
 		<div id="toolbarup" data-role="header" > 
-		<a href="#signature" data-theme="e" class="ui-btn-right" >valider</a>
+
+		<a href="javascript:initDessin();" data-theme="e" class="ui-btn-right" >valider</a>
 		<div id="textbarup"> 
 			<p>Message</p>
 		</div>
@@ -368,7 +352,7 @@
 			</div>
 		</div>
 		
-		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
+		<div data-role="footer" data-id="mcam" data-theme="c">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#connexion" >Poster <br>à 2,49 €</a></li>
@@ -386,39 +370,19 @@
 			</div>
 				<a href="#message" data-theme="c" class="ui-btn-left">Retour</a>
 		</div>	
-		<!--
-		<div data-role="content" style="margin:0; padding:0; border:0;width:100%;">
-			
-			<canvas id="canvasSig" style="height: 217px;width:320px;" ></canvas>
-			
-		</div>
-		-->
-	<div data-role="content">
-	<br/>
-		<div class="sigPad">
-			<h1><FONT FACE="Plume"> Votre nom</FONT><img src="images/flechePourPack.png"/></h1>
-			<input type="text" name="name" id="name" class="name">
-			<h1><FONT FACE="Plume"> Signature Facultative</FONT><img src="images/flechePourPack.png"/></h1>
-			<ul class="sigNav">
-			  <li class="typeIt"><a href="#type-it" class="current">En Ecrit</a></li>
-			  <li class="drawIt"><a href="#draw-it" >En Dessin</a></li>
-			  <li class="clearButton"><a href="#clear">Effacer</a></li>
-			</ul>
-				<div class="sig sigWrapper" >
-				  <div class="typed" ></div>
-				  <canvas class="pad" width="300" height="100" ></canvas>
-				  <input type="hidden" name="output" class="output">
+			<div data-role="content">
+				<div data-role="content">
+				<canvas id="canvasSig" style="height: 217px;width:320px;" ></canvas>
 				</div>
-		</div>
-			
-	</div>
+			</div>
   
   
-		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
+		<div data-role="footer" data-id="mcam" data-position="fixed" data-theme="c">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="javascript:preview(false);" >Pas de signature</a></li>
 					<li><a href="javascript:preview(true);"   >valider</a></li>
+					<li><a href="javascript:clear();" >Effacer</a></li>
 				</ul>
 			</div>
 		</div>
@@ -429,8 +393,8 @@
 		<div id="toolbarup" data-role="header" >
 			<div id="textbarup">
 				<p>Destinataire</p>
-			</div>
-				<a href="#preview" data-theme="c" class="ui-btn-left">Retour</a>
+
+				<a href="#connexion" data-theme="c" class="ui-btn-left">Retour</a>
 		</div>	
 		<div data-role="content" class="corps">
 			 <div data-role="fieldcontain">
@@ -450,7 +414,7 @@
 			</div>
 		</div>
 		
-		<div data-role="footer" class="ui-bar" data-id="mcam" data-position="fixed" data-theme="c">
+		<div data-role="footer" data-id="mcam" data-position="fixed" data-theme="c">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="javascript:addDest();" >Valider</a></li>
@@ -460,11 +424,11 @@
 	</div>
 	 
 	 <div data-role="page" id="listeDestinataires" ontouchmove="touchMove(event);" class="corps">
-			<div id="toolbarup" data-role="header" >
-				<div id="textbarup"> 
+			<div id="toolbarup" data-role="header" > 
+			<div id="textbarup"> 
 			 		<h1>Les destinataires</h1>
 			 	</div>
-			<a href="#preview" data-theme="c" class="ui-btn-left">Retour</a>
+			<a href="#Destinataire" data-theme="c" class="ui-btn-left">Retour</a>
 		</div>
 		<a href="javascript:detailDest();" data-role="button" data-icon="plus" data-iconpos="right">Ajouter un destinataire</a>
 		<div data-role="content" >

@@ -13,7 +13,7 @@ var cadre="";
 var sensPreview="recto";
 
 var fond_carte = "images/dosCarte.png";
-
+/*
 var BoService = "https://web.macarteamoi.net2-courrier.extra.laposte.fr/bomcam/services/xmlrpc";
 var methodRpc = "system.connect";
 
@@ -22,7 +22,7 @@ var methodRpc = "system.connect";
    //request.addParam(document.getElementById("n2").value);  
    var response = request.send();  
    alert(response.parseXML());  
-
+*/
 			
 function getPhoto(){
 	if(navigator.camera){
@@ -96,6 +96,7 @@ function drawCarte(nomcadre){
 							fromCenter: false});
 	}
 	cadre=nomcadre;
+	$.mobile.changePage("#PersoCarte");
 	
 }
 
@@ -334,8 +335,11 @@ function Validation() {
 				$.mobile.changePage("#message");
 				}
 			 }
-			 
 
+			 
+			 
+			 
+// Gestion Contact
 			function onBodyLoad()
 			{		
 				document.addEventListener("deviceready",onDeviceReady,false);
