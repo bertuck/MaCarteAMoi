@@ -15,6 +15,7 @@
 				<script src="js/jquery/jquery.fieldtag.min.js"></script>
 				<script src="js/base.js"></script>
 				<script src="js/rotate3Di.js"></script>
+				<script src="js/mimic.js"></script>
 				<script src="js/mcampg.js"></script>
 		<!--<script src="js/dessin.js"></script>-->
 		
@@ -346,9 +347,10 @@
 			<div style="height:50px; width: 100%"></div>
 			<div id="flipbox" onclick="flipCarte();" style="height:400px; width: 280px;margin:10px">
 				<div id="recto">
+					<canvas id="canvarecto" style="height: 217px;width:320px;" ></canvas>
 				</div>
-				<div id="verso">
-					<canvas id="canvapreview" style="height: 217px;width:320px;" ></canvas>
+				<div id="verso" style="display: none">
+					<canvas id="canvaverso" style="height: 217px;width:320px;" ></canvas>
 				</div>
 			</div>
 		</div>

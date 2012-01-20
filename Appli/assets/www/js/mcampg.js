@@ -12,26 +12,45 @@ var image="";
 var cadre="";
 var sensPreview="recto";
 
-var fond_carte = new Image();
-fond_carte.src = "images/dosCarte.png";
-	
+var fond_carte = "images/dosCarte.png";
+
+var BoService = "https://web.macarteamoi.net2-courrier.extra.laposte.fr/bomcam/services/xmlrpc";
+var methodRpc = "system.connect";
+
+   var request = new XmlRpcRequest(BoService, methodRpc);  
+   //request.addParam(document.getElementById("n1").value);  
+   //request.addParam(document.getElementById("n2").value);  
+   var response = request.send();  
+   alert(response.parseXML());  
+
 			
 function getPhoto(){
-    options={destinationType :  1,
-                    sourceType : 1,
-                    allowEdit: true}
-    navigator.camera.getPicture(getPictureSuccess, getPictureFail, options); 
+	if(navigator.camera){
+		options={destinationType :  1,
+						sourceType : 1,
+						allowEdit: true}
+		navigator.camera.getPicture(getPictureSuccess, getPictureFail, options); 
+	}else{
+		image = "images/skin03.png";
+		getPictureSuccess(image);
+	}
+	
+    
 
 }
 
 function getPhotoAlbum(){
-    
-
-
-	options={destinationType :  1,
+    if(navigator.camera){
+		options={destinationType :  1,
                     sourceType : 0,
                     allowEdit: true}
-    navigator.camera.getPicture(getPictureSuccess, getPictureFail, options); 
+		navigator.camera.getPicture(getPictureSuccess, getPictureFail, options); 
+	}else{
+		image = "images/skin03.png";
+		getPictureSuccess(image);
+	}
+	
+	
 	
 }
 
@@ -110,40 +129,27 @@ function preview(){
     srcRecto = canvas.toDataURL("image/png");
 
 
-	var imgRecto= jQuery('<img/>',{src:srcRecto, height:"140px", width:"280px"});
-	$("#recto").empty();
-	$("#recto").append(imgRecto);
-	varti=$("#canvapreview").drawImage({source: fond_carte,
+	var imgRecto= jQuery('<img/>',{src:srcRecto, height:"217px", width:"320px"});
+	
+	$("#canvarecto").drawImage({source: image,
 							 x: 0,
 							 y: 0,
 							 height: 140,
 							 width: 280,
 							 fromCenter: false});
-    $("#verso").empty();
-	$("#vecto").append(varti);
+	$("#canvaverso").drawImage({source: fond_carte,
+							 x: 0,
+							 y: 0,
+							 height: 140,
+							 width: 280,
+							 fromCenter: false});
 	text=$("#textMessage")[0].value;
 	var lines = text.split("\n");
 	
 	font = "'desyrel'";
 	fontSize = 8;
 	textColor = '#000000';
-	/*versoCanvas.drawImage(fond_carte, 0, 0, 280, 140);
-	var ctx = versoCanvas[0].getContext("2d"); 
 	
-	
-	ctx.font = fontSize + "px " + font;
-	ctx.fillStyle = textColor;
-	for (i = 0; i < lines.length; i++) {
- 		ctx.fillText(lines[i],10, i*fontSize+15);
-	}
-							  
-	srcVerso = versoCanvas[0].toDataURL("image/png");
-	var imgVerso= jQuery('<img/>',{src:srcVerso, height:"140px", width:"280px"});
-	
-
-	$("#verso").append(imgVerso);
-	$("#verso").hide();
-	*/
 	$.mobile.changePage("#Preview");
 	
 }
