@@ -15,26 +15,20 @@
 {
 	background: url(images/topBarFond.png); 
 	height: 46px;
-	font-size: 20px;
 	text-align:center;
 	border:transparent; 
 }
 
-#imgmenu
-{
-	margin-top: 6%;
-	margin-left: 38%;
-}
 #textbarup
 {
-	margin-top: 10px;
 	background: transparent;
+	margin-top: 15px;
 	border: transparent;
 }
+
 .corps
 {
-	background: url(images/fondBlancGrille.jpg);
-	background-position: center;
+	background: url(images/fondBlancGrille.jpg); 
 }
 
 .toolbardown

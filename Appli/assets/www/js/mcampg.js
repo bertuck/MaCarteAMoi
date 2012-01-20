@@ -68,9 +68,7 @@ function getPictureSuccess(imageUri) {
 								 y: 0,
 								 height: 150,
 								 width: 300,
-								  fromCenter: false});
-		Canvas2Image.saveAsPNG($("#mycanvas"));
-								
+								  fromCenter: false})
 	}catch(err){
 		alert(err);
 	}
@@ -146,12 +144,39 @@ function preview(){
 							 height: 140,
 							 width: 280,
 							 fromCenter: false});
-	text=$("#textMessage")[0].value;
-	var lines = text.split("\n");
+							 
+		text=$("#textMessage")[0].value;
+		var lines = text.split("\n");
+		font = "'desyrel'";
+		fontSize = 12;
+		textColor = '#000000';
+		var posy = 12;
+		for (i = 0; i < lines.length; i++) {
+			posy += 12;
+		   $("#canvaverso").drawText({
+							  fillStyle: textColor,
+							  x: 15, 
+							  y: posy,
+							  text: lines[i],
+							  align: "left",
+							  baseline: "middle",
+							  position: "relative",
+							  font: fontSize + "px " + font
+							});
+							
+			}
 	
-	font = "'desyrel'";
-	fontSize = 8;
-	textColor = '#000000';
+       /*var ctx = versoCanvas[0].getContext("2d");
+       ctx.drawImage(fond_carte, 0, 0, 280, 140);
+       ctx.font = fontSize + "px " + font;
+       ctx.fillStyle = textColor;
+	   */
+       
+		
+			   
+      
+		
+	
 	
 	$.mobile.changePage("#Preview");
 	
