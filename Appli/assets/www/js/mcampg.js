@@ -11,8 +11,9 @@ var carte ={
 var image="";
 var cadre="";
 var sensPreview="recto";
-
 var fond_carte = "images/dosCarte.png";
+
+
 /*
 var BoService = "https://web.macarteamoi.net2-courrier.extra.laposte.fr/bomcam/services/xmlrpc";
 var methodRpc = "system.connect";
@@ -31,12 +32,9 @@ function getPhoto(){
 						allowEdit: true}
 		navigator.camera.getPicture(getPictureSuccess, getPictureFail, options); 
 	}else{
-		image = "images/skin03.png";
+		image = "images/test.jpg";
 		getPictureSuccess(image);
 	}
-	
-    
-
 }
 
 function getPhotoAlbum(){
@@ -46,13 +44,11 @@ function getPhotoAlbum(){
                     allowEdit: true}
 		navigator.camera.getPicture(getPictureSuccess, getPictureFail, options); 
 	}else{
-		image = "images/skin03.png";
+		image = "images/test.jpg";
 		getPictureSuccess(image);
 	}
-	
-	
-	
 }
+
 
 function getPictureFail(message) {
     alert('erreur: ' + message);
@@ -74,27 +70,78 @@ function getPictureSuccess(imageUri) {
 	}
 
 	$("#scroller").scrollview({"direction":"x"});
-	$.mobile.changePage("#PersoCarte");
+	$.mobile.changePage("#PersoCarte", { transition: "slideup"} );
+	
 }
 
-function drawCarte(nomcadre){
-	$("#mycanvas").clearCanvas();
-	$("#mycanvas").drawImage({source: image,
-							 x: 0,
-							 y: 0,
-							 height: 150,
-							 width: 300,
-							  fromCenter: false});
-	if (nomcadre !=""){
-		$("#mycanvas").drawImage({source: nomcadre,
-							 x: 0,
-							 y: 0,
-							 height: 150,
-							 width: 300,
-							fromCenter: false});
+function drawCarte(nomcadre, element){
+// "element" permet de recharger les pages où se situe le cadre
+	if (element=='valeur2')
+	{
+				$("#mycanvastoo2").clearCanvas();
+				$("#mycanvastoo2").drawImage({source: image,
+										 x: 0,
+										 y: 0,
+										 height: 150,
+										 width: 300,
+										  fromCenter: false});
+				if (nomcadre !=""){
+					$("#mycanvastoo2").drawImage({source: nomcadre,
+										 x: 0,
+										 y: 0,
+										 height: 150,
+										 width: 300,
+										 position: "absolute",
+										fromCenter: false});
+				}
+				cadre=nomcadre;
+			    $.mobile.changePage("#PersoCarte3");
 	}
-	cadre=nomcadre;
-	$.mobile.changePage("#PersoCarte");
+		else
+		{
+			if (element=='valeur1')
+			{
+				$("#mycanvastoo").clearCanvas();
+				$("#mycanvastoo").drawImage({source: image,
+										 x: 0,
+										 y: 0,
+										 height: 150,
+										 width: 300,
+										  fromCenter: false});
+				if (nomcadre !=""){
+					$("#mycanvastoo").drawImage({source: nomcadre,
+										 x: 0,
+										 y: 0,
+										 height: 150,
+										 width: 300,
+										 position: "absolute",
+										fromCenter: false});
+				}
+				cadre=nomcadre;
+				$.mobile.changePage("#PersoCarte2");
+			}
+			else
+			{
+					$("#mycanvas").clearCanvas();
+					$("#mycanvas").drawImage({source: image,
+											 x: 0,
+											 y: 0,
+											 height: 150,
+											 width: 300,
+											  fromCenter: false});
+					if (nomcadre !=""){
+						$("#mycanvas").drawImage({source: nomcadre,
+											 x: 0,
+											 y: 0,
+											 height: 150,
+											 width: 300,
+											 position: "absolute",
+											fromCenter: false});
+					}
+					cadre=nomcadre;
+					$.mobile.changePage("#PersoCarte");
+			}
+		}
 	
 }
 
@@ -124,10 +171,14 @@ function voirapercu()
 	$.mobile.changePage("#apercu");
 }
 
-function preview(){
+
+// Gestion de l'aperçu de la carte postale
+function preview(elem){
 	var canvas = document.getElementById("mycanvas");
-    
+	var sign = document.getElementById("canvasSig");
+    // Sur le mobile on ne recupére pas la signature a corriger donc.
     srcRecto = canvas.toDataURL("image/png");
+	srcSign = sign.toDataURL("image/png");
 
 
 	var imgRecto= jQuery('<img/>',{src:srcRecto, height:"217px", width:"320px"});
@@ -138,7 +189,7 @@ function preview(){
 							 height: 140,
 							 width: 280,
 							 fromCenter: false});
-	$("#canvaverso").drawImage({source: fond_carte,
+		$("#canvaverso").drawImage({source: fond_carte,
 							 x: 0,
 							 y: 0,
 							 height: 140,
@@ -150,34 +201,38 @@ function preview(){
 		font = "'desyrel'";
 		fontSize = 12;
 		textColor = '#000000';
-		var posy = 12;
+		var posy = 6;
 		for (i = 0; i < lines.length; i++) {
-			posy += 12;
-		   $("#canvaverso").drawText({
-							  fillStyle: textColor,
-							  x: 15, 
-							  y: posy,
-							  text: lines[i],
-							  align: "left",
-							  baseline: "middle",
-							  position: "relative",
-							  font: fontSize + "px " + font
-							});
+		posy += 10;
+	    $("#canvaverso").drawText({
+						  fillStyle: textColor,
+						  x: 10, 
+						  y: posy,
+						  text: lines[i],
+						  align: "left",
+						  baseline: "middle",
+						  position: "absolute",
+						  font: fontSize + "px " + font
+						});
 							
 			}
+	if (elem !=false)
+	{
+		$("#canvaverso").drawImage({source: srcSign, // trouver une autre source pour récupérer la signature
+				 x: 80, //80
+				 y: 110, //110
+				 height: 25, //25
+				 width: 50,  //50
+				 position: "absolute",
+				 fromCenter: false});
+	}
 	
        /*var ctx = versoCanvas[0].getContext("2d");
        ctx.drawImage(fond_carte, 0, 0, 280, 140);
        ctx.font = fontSize + "px " + font;
        ctx.fillStyle = textColor;
 	   */
-       
-		
-			   
-      
-		
-	
-	
+
 	$.mobile.changePage("#Preview");
 	
 }
@@ -314,8 +369,7 @@ $('#aide').live('pageshow', function(event, ui){
 	$("#divListAide").scrollview({"direction":"y"});
 });
 
-// Gestion du panier
-
+// Gestion du panier, fonction a supprimer une fois l'enregistrement de carte effectué
 function dessinecarte()
 {
 	$("#canvaapercu2").clearCanvas();
@@ -333,7 +387,6 @@ function dessinecarte()
 							 width: 90,
 							fromCenter: false});
 	}
-
 }
 
 function addPanier()
@@ -344,7 +397,7 @@ function addPanier()
 }
 
 
-
+// Gestion du panier à faire
 
 
 function validerPanier()
@@ -453,3 +506,45 @@ function addC(numContact)
     function onError(contactError) {
         alert('Error!');
     }
+
+	
+function changepage()
+{
+		try{
+		$("#mycanvastoo").drawImage({source: image,
+								 x: 0,
+								 y: 0,
+								 height: 150,
+								 width: 300,
+								  fromCenter: false})
+	}catch(err){
+		alert(err);
+	}
+
+	$("#scroller1").scrollview({"direction":"x"});
+	$.mobile.changePage("#PersoCarte2");
+
+}
+
+function changepage2()
+{
+		try{
+		$("#mycanvastoo2").drawImage({source: image,
+								 x: 0,
+								 y: 0,
+								 height: 150,
+								 width: 300,
+								  fromCenter: false})
+	}catch(err){
+		alert(err);
+	}
+
+	$("#scroller2").scrollview({"direction":"x"});
+	$.mobile.changePage("#PersoCarte3");
+
+}
+
+
+
+
+// Interface Cadre

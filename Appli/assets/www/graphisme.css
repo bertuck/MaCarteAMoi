@@ -29,6 +29,7 @@
 .corps
 {
 	background: url(images/fondBlancGrille.jpg); 
+	height: 100%;
 }
 
 .toolbardown
