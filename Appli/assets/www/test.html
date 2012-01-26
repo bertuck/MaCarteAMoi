@@ -269,8 +269,7 @@
 
 
 
-														<!-- Ajout d'un cadre -->	
-														
+														<!-- Ajout d'un cadre -->
 <!-- Théme cadre 1 -->	
 	<div data-role="page" id="PersoCarte" ontouchmove="touchMove(event);" class="corps">
 		<div data-backbtn="false"  id="toolbarup" data-role="header" > 
@@ -280,93 +279,34 @@
 				</div>
 				<a href="test.html" data-theme="c" class="ui-btn-left">Retour</a>
 		</div>
-		<div data-role="header" data-theme="b" data-position="inline">
-			<a href="javascript:changepage2();" data-transition="none" data-iconpos="notext" data-icon="arrow-l">Test</a>
-			<h1>Cadre théme 1</h1>
-			<a href="javascript:changepage();" data-transition="none" data-iconpos="notext" data-icon="arrow-r" data-theme="b">Test</a>
-		</div>
 		
-		<div data-role="content" style="text-align:center; width:86%;" >
-			
-			<canvas id="mycanvas" style="height: 196px; width:290px;" ></canvas>
-      	 
+		
+			<div id="divListCadre">
+				<div data-role="listview" data-theme="d" id="listecadre" data-inset="true">
+				</div>
+			</div>
+			<div data-role="content" style="text-align:center; width:86%;" >
+				<canvas id="mycanvas" style="height: 196px; width:290px;" ></canvas>
 			<div id="scroller" class="threeByThree" style="width:104%;" >
+				<div id="divListCadre2">
+					<ul data-role="listview" data-theme="d" id="listecadre2" data-inset="true">
+					</ul>
+				</div>
+			</div>	
+		</div>
+			
+			<!--
 				<div class="square" ><a href="javascript:drawCarte('');"><img src="images/skin00.png" width="90" height="65" /></a></div>
 				<div class="square"><a href="javascript:drawCarte('images/skin01.png');"><img src="images/skin01.png" width="90" height="65" /></a></div>
 				<div class="square"><a href="javascript:drawCarte('images/skin02.png');"><img src="images/skin02.png" width="90" height="65" /></a></div>
 				<div class="square"><a href="javascript:drawCarte('images/skin03.png');"><img src="images/skin03.png" width="90" height="65" /></a></div>
 				<div class="square"><a href="javascript:drawCarte('images/skin04.png');"><img src="images/skin04.png" width="90" height="65" /></a></div>
 			</div>
-		</div>
+			-->
 		<div id="toolbarup" data-position="fixed" data-role="footer" > 
 			<img src="images/logoAvecTitre.png"/>
 		</div>	
 	</div>
-
-<!-- Théme cadre 3 -->	
-		<div data-role="page" id="PersoCarte3" ontouchmove="touchMove(event);" class="corps">
-		<div data-backbtn="false"  id="toolbarup" data-role="header" > 
-				<a href="javascript:voirapercu();" data-theme="e" class="ui-btn-right" >valider</a>
-				<div id="textbarup"> 
-					<p>Personnalisé</p>
-				</div>
-				<a href="test.html" data-theme="c" class="ui-btn-left">Retour</a>
-		</div>
-		<div data-role="header" data-theme="b" data-position="inline">
-			<a href="javascript:changepage();" data-transition="none" data-icon="arrow-l">Test</a>
-			<h1>Cadre théme 3</h1>
-			<a href="#PersoCarte" data-transition="none" data-iconpos="notext" data-icon="arrow-r" data-theme="b">Test</a>
-		</div>
-		
-		<div data-role="content" style="text-align:center; width:86%;" >
-			
-			<canvas id="mycanvastoo2" style="height: 196px; width:290px;" ></canvas>
-      	 
-			<div id="scroller2" class="threeByThree" style="width:104%;" >
-				<div class="square"><a href="javascript:drawCarte('images/skin09.png', 'valeur2');"><img src="images/skin09.png" width="90" height="65" /></a></div>
-				<div class="square"><a href="javascript:drawCarte('images/skin10.png', 'valeur2');"><img src="images/skin10.png" width="90" height="65" /></a></div>
-				<div class="square"><a href="javascript:drawCarte('images/skin11.png', 'valeur2');"><img src="images/skin11.png" width="90" height="65" /></a></div>
-				<div class="square"><a href="javascript:drawCarte('images/skin12.png', 'valeur2');"><img src="images/skin12.png" width="90" height="65" /></a></div>
-				<div class="square"><a href="javascript:drawCarte('images/skin13.png', 'valeur2');"><img src="images/skin13.png" width="90" height="65" /></a></div>
-			</div>
-		</div>
-		<div id="toolbarup" data-position="fixed" data-role="footer" > 
-			<img src="images/logoAvecTitre.png"/>
-		</div>	
-	</div>
-	
-	
-<!-- Théme cadre 2 -->
-		<div data-role="page" id="PersoCarte2" ontouchmove="touchMove(event);" class="corps">
-		<div data-backbtn="false"  id="toolbarup" data-role="header" > 
-				<a href="javascript:voirapercu();" data-theme="e" class="ui-btn-right" >valider</a>
-				<div id="textbarup"> 
-					<p>Personnalisé</p>
-				</div>
-				<a href="test.html" data-theme="c" class="ui-btn-left">Retour</a>
-		</div>
-		<div data-role="header" data-theme="b" data-position="inline">
-			<a href="#PersoCarte" data-transition="none" data-iconpos="notext" data-icon="arrow-l">Test</a>
-			<h1>Cadre théme 2</h1>
-			<a href="javascript:changepage2();" data-iconpos="notext" data-icon="arrow-r" data-theme="b">Test</a>
-		</div>
-		
-		<div data-role="content" style="text-align:center; width:86%;" >
-			
-			<canvas id="mycanvastoo" style="height: 196px; width:290px;" ></canvas>
-      	 
-			<div id="scroller1" class="threeByThree" style="width:104%;" >
-				<div class="square"><a href="javascript:drawCarte('images/skin05.png', 'valeur1');"><img src="images/skin05.png" width="90" height="65" /></a></div>
-				<div class="square"><a href="javascript:drawCarte('images/skin06.png', 'valeur1');"><img src="images/skin06.png" width="90" height="65" /></a></div>
-				<div class="square"><a href="javascript:drawCarte('images/skin07.png', 'valeur1');"><img src="images/skin07.png" width="90" height="65" /></a></div>
-				<div class="square"><a href="javascript:drawCarte('images/skin08.png', 'valeur1');"><img src="images/skin08.png" width="90" height="65" /></a></div>
-			</div>
-		</div>
-		<div id="toolbarup" data-position="fixed" data-role="footer" > 
-			<img src="images/logoAvecTitre.png"/>
-		</div>	
-	</div>
-	
 	
 	
 	

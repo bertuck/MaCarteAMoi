@@ -70,79 +70,30 @@ function getPictureSuccess(imageUri) {
 	}
 
 	$("#scroller").scrollview({"direction":"x"});
-	$.mobile.changePage("#PersoCarte", { transition: "slideup"} );
+	ScrollCadre(0);
 	
 }
 
-function drawCarte(nomcadre, element){
-// "element" permet de recharger les pages où se situe le cadre
-	if (element=='valeur2')
-	{
-				$("#mycanvastoo2").clearCanvas();
-				$("#mycanvastoo2").drawImage({source: image,
-										 x: 0,
-										 y: 0,
-										 height: 150,
-										 width: 300,
-										  fromCenter: false});
-				if (nomcadre !=""){
-					$("#mycanvastoo2").drawImage({source: nomcadre,
-										 x: 0,
-										 y: 0,
-										 height: 150,
-										 width: 300,
-										 position: "absolute",
-										fromCenter: false});
-				}
-				cadre=nomcadre;
-			    $.mobile.changePage("#PersoCarte3");
+
+function drawCarte(nomcadre){
+	$("#mycanvas").clearCanvas();
+	$("#mycanvas").drawImage({source: image,
+							 x: 0,
+							 y: 0,
+							 height: 150,
+							 width: 300,
+							  fromCenter: false});
+	if (nomcadre !=""){
+		$("#mycanvas").drawImage({source: nomcadre,
+							 x: 0,
+							 y: 0,
+							 height: 150,
+							 width: 300,
+							 position: "absolute",
+							fromCenter: false});
 	}
-		else
-		{
-			if (element=='valeur1')
-			{
-				$("#mycanvastoo").clearCanvas();
-				$("#mycanvastoo").drawImage({source: image,
-										 x: 0,
-										 y: 0,
-										 height: 150,
-										 width: 300,
-										  fromCenter: false});
-				if (nomcadre !=""){
-					$("#mycanvastoo").drawImage({source: nomcadre,
-										 x: 0,
-										 y: 0,
-										 height: 150,
-										 width: 300,
-										 position: "absolute",
-										fromCenter: false});
-				}
-				cadre=nomcadre;
-				$.mobile.changePage("#PersoCarte2");
-			}
-			else
-			{
-					$("#mycanvas").clearCanvas();
-					$("#mycanvas").drawImage({source: image,
-											 x: 0,
-											 y: 0,
-											 height: 150,
-											 width: 300,
-											  fromCenter: false});
-					if (nomcadre !=""){
-						$("#mycanvas").drawImage({source: nomcadre,
-											 x: 0,
-											 y: 0,
-											 height: 150,
-											 width: 300,
-											 position: "absolute",
-											fromCenter: false});
-					}
-					cadre=nomcadre;
-					$.mobile.changePage("#PersoCarte");
-			}
-		}
-	
+	cadre=nomcadre;
+	$.mobile.changePage("#PersoCarte");
 }
 
 function dessinecarte2()
@@ -446,30 +397,30 @@ function Validation() {
 
 	function afficheListC(contacts)
 	{
-				ListeContacts=contacts;
-				$("#listec").empty();
-		        for (var i=0; i<contacts.length; i++) 
+		ListeContacts=contacts;
+		$("#listec").empty();
+		for (var i=0; i<contacts.length; i++) 
+		{
+		dest=contacts[i].addresses;
+		nom=contacts[i].displayName;
+		if(dest!=null)
+			{
+				for (var j=0; j<dest.length; j++) 
 				{
-				dest=contacts[i].addresses;
-				nom=contacts[i].displayName;
-				if(dest!=null)
-					{
-						for (var j=0; j<dest.length; j++) 
-						{
-							Address=contacts[i].addresses[j].streetAddress;
-							Locality=contacts[i].addresses[j].locality;
-							Region=contacts[i].addresses[j].region;
-							PCode=contacts[i].addresses[j].postalCode;
-							Country=contacts[i].addresses[j].country;
-							// ligne='<li> <a href="javascript:addC('+adresse+');"><h6>'+nom+'</h6></a></li>';
-							ligne='<li> <a href="javascript:addC('+i+');"><h6>'+nom+'</h6></a></li>';
+					Address=contacts[i].addresses[j].streetAddress;
+					Locality=contacts[i].addresses[j].locality;
+					Region=contacts[i].addresses[j].region;
+					PCode=contacts[i].addresses[j].postalCode;
+					Country=contacts[i].addresses[j].country;
+					// ligne='<li> <a href="javascript:addC('+adresse+');"><h6>'+nom+'</h6></a></li>';
+					ligne='<li> <a href="javascript:addC('+i+');"><h6>'+nom+'</h6></a></li>';
 // Si on a cliqué sur le "li" alors sauvegarder ses données.
 
-							$("#listec").append(ligne);
+					$("#listec").append(ligne);
 
-						}
-					}
 				}
+			}
+		}
 			
 		$("#divListC").scrollview({"direction":"y"});
 		$.mobile.changePage("#listeCt");
@@ -507,44 +458,63 @@ function addC(numContact)
         alert('Error!');
     }
 
-	
-function changepage()
-{
-		try{
-		$("#mycanvastoo").drawImage({source: image,
-								 x: 0,
-								 y: 0,
-								 height: 150,
-								 width: 300,
-								  fromCenter: false})
-	}catch(err){
-		alert(err);
-	}
-
-	$("#scroller1").scrollview({"direction":"x"});
-	$.mobile.changePage("#PersoCarte2");
-
-}
-
-function changepage2()
-{
-		try{
-		$("#mycanvastoo2").drawImage({source: image,
-								 x: 0,
-								 y: 0,
-								 height: 150,
-								 width: 300,
-								  fromCenter: false})
-	}catch(err){
-		alert(err);
-	}
-
-	$("#scroller2").scrollview({"direction":"x"});
-	$.mobile.changePage("#PersoCarte3");
-
-}
-
-
 
 
 // Interface Cadre
+
+
+var themes =  [{theme:"Anniversaire", contenu:["cadres/anniv1.png", "cadres/anniv2.png", "cadres/anniv3.png", "cadres/anniv4.png", "cadres/anniv5.png", "cadres/anniv6.png"]},
+			{theme:"Classique", contenu:["cadres/classique1.png", "cadres/classique2.png", "cadres/classique3.png", "cadres/classique4.png", "cadres/classique5.png", "cadres/classique6.png"]},
+			{theme:"Evenement", contenu:["cadres/evenement1.png", "cadres/evenement2.png", "cadres/evenement3.png", "cadres/evenement4.png", "cadres/evenement5.png", "cadres/evenement6.png"]},
+			{theme:"Fête", contenu:["cadres/fetes1.png", "cadres/fetes2.png", "cadres/afetes3.png", "cadres/fetes4.png", "cadres/fetes5.png", "cadres/fetes6.png"]},
+		 	{theme:"Naissance", contenu:["cadres/naissance1.png", "cadres/naissance2.png", "cadres/naissance3.png", "cadres/naissance4.png", "cadres/naissance5.png", "cadres/naissance6.png"]},
+		 	{theme:"Noel", contenu:["cadres/noel1.png", "cadres/noel2.png", "cadres/noel3.png", "cadres/noel4.png", "cadres/noel5.png", "cadres/noel6.png"]},
+		 	{theme:"Vacances", contenu:["cadres/vacances1.png", "cadres/vacances2.png", "cadres/vacances3.png", "cadres/vacances4.png", "cadres/vacances5.png", "cadres/vacances6.png"]},
+			{theme:"Voeux", contenu:["cadres/voeux1.png", "cadres/voeux2.png", "cadres/voeux3.png", "cadres/voeux4.png", "cadres/voeux5.png", "cadres/voeux6.png"]}] ;
+
+			
+	/*function afficheCadre()
+	{
+		j=0;
+		ligne2="";
+		$("#listecadre").empty();
+		ligne = "<div data-role='header' data-theme='b' data-position='inline'><a href='javascript:ScrollCadre(7);' data-transition='none' data-iconpos='notext' data-icon='arrow-l'>Test</a><h1>"+themes[0].theme+"</h1><a href='javascript:ScrollCadre(1);' data-transition='none' data-iconpos='notext' data-icon='arrow-r' data-theme='b'>Test</a></div> ";
+		$("#listecadre").html(ligne);
+					$("#listecadre2").empty();
+				for (var k=0; k<themes[0].contenu.length; k++) 
+				{
+					ligne2 += '<div class="square" ><a href="javascript:drawCarte(\''+themes[0].contenu[k]+'\');"><img src="'+themes[0].contenu[k]+'" width="90" height="65" /></a></div>';
+				}
+		$("#divListCadre").scrollview({"direction":"y"});
+		$.mobile.changePage("#PersoCarte");	
+		$('#listecadre').header("refresh");
+			$("#divListCadre2").html(ligne2);
+			$("#divListCadre2").scrollview({"direction":"x"});
+			$('#listecadre2').listview("refresh");
+	}
+	*/
+	
+ function ScrollCadre(j)
+ { 
+		ligne2="";
+		if (j < 0) j = 7;
+		if (j > 7) j = 0;
+		$("#listecadre").empty();
+		i = j -1;
+		l = j + 1;
+		ligne = "<div data-role='header' data-theme='b' data-position='inline'><a href='javascript:ScrollCadre("+i+");' data-transition='none' data-iconpos='notext' data-icon='arrow-l'>Test</a><h1>"+themes[j].theme+"</h1><a href='javascript:ScrollCadre("+l+");' data-transition='none' data-iconpos='notext' data-icon='arrow-r' data-theme='b'>Test</a></div> ";		
+		$("#listecadre").html(ligne);
+		$("#divListCadre").scrollview({"direction":"y"});
+		$.mobile.changePage("#PersoCarte");	
+		$('#listecadre').listview("refresh");
+			$("#listecadre2").empty();
+				for (var k=0; k<themes[j].contenu.length; k++) 
+				{
+					ligne2 += '<div class="square" ><a href="javascript:drawCarte(\''+themes[j].contenu[k]+'\');"><img src="'+themes[j].contenu[k]+'" width="90" height="65" /></a></div>';
+				}
+				$("#divListCadre2").html(ligne2);
+			$("#divListCadre2").scrollview({"direction":"x"});
+			$('#listecadre2').listview("refresh");
+ }
+ 
+ 
