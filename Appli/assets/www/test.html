@@ -70,7 +70,7 @@
 						<h1> <FONT FACE="Plume"> Support Client</font><img src="images/flechePourPack.png"/></h1>
 						<a href="#aide" data-transition="pop" data-role="button" data-theme="b">AIDE</a> 
 						<h1> <FONT FACE="Plume">  Mon compte </font><img src="images/flechePourPack.png"/></h1>
-						<a href="#compte" data-role="button" data-theme="b">DONNEES PERSONNELLES</a> 
+						<a href="#" data-role="button" data-theme="b">DONNEES PERSONNELLES</a> 
 						<h1> <FONT FACE="Plume">  Condition generales </font><img src="images/flechePourPack.png"/></h1>
 						<a href="#cgu" data-role="button" data-theme="b">CGU</a> 
 						<a href="#mention" data-role="button" data-theme="b">MENTIONS LEGALES</a> 
@@ -81,32 +81,6 @@
 			</div>
 	</div> 
 		
-<!-- formulaire test -->
-    <div data-role="page" id="compte" class="corps">
-
-        <div data-backbtn="false"  id="toolbarup" data-role="header" >
-			<div id="textbarup"> 
-				<p>Aide</p>
-			</div>
-				<a href="#menu1" data-theme="c" class="ui-btn-right">Retour</a>
-		</div>	
-
-        <div data-role="content" > 
-                <form>
-                Nom:<INPUT type=text name="nom" placeholder="Entrez votre nom" required/>
-                Prenom:<INPUT type=text name="prenom" placeholder="Entrez votre prenom" required/>
-				Mot de passe:<INPUT type=password name="pass" placeholder="Saisissez un mot de passe" required/>
-				Téléphone:<INPUT type=text name="tel" placeholder="Entrez votre numéro de téléphone" required/>
-				Adresse mail:<INPUT type=text name="mail" placeholder="Entrez votre adresse mail" required/>
-				</br>
-				<input type="submit" value="Envoyer"/>
-                </form> 
-        </div>
-        
-        <div data-role="footer" data-theme="c"> 
-			<h4>Ta-da</h4> 
-		</div> 
-	</div>
 
 <!-- aide -->
 	<div data-role="page" id="aide" class="corps">
@@ -281,10 +255,10 @@
 		</div>
 		
 		
-			<div id="divListCadre">
+			<!-- <div id="divListCadre"> -->
 				<div data-role="listview" data-theme="d" id="listecadre" data-inset="true">
 				</div>
-			</div>
+
 			<div data-role="content" style="text-align:center; width:86%;" >
 				<canvas id="mycanvas" style="height: 196px; width:290px;" ></canvas>
 			<div id="scroller" class="threeByThree" style="width:104%;" >
@@ -293,6 +267,7 @@
 					</ul>
 				</div>
 			</div>	
+			<a href="javascript:drawCarte('');" data-role="button">Effacer</a>
 		</div>
 			
 			<!--
@@ -328,7 +303,7 @@
 		
 		<div data-role="content" >
 			
-			<canvas id="canvaapercu" style="height: 203px;width:300px;" ></canvas>
+			<canvas id="canvaapercu" style="height: 196px;width:290px;" ></canvas>
       	 
 		</div>
 		
@@ -399,13 +374,14 @@
 				<a href="#message" data-theme="c" class="ui-btn-left">Retour</a>
 		</div>	
 			<div data-role="content">
-				<div data-role="content">
-				<canvas id="canvasSig" style="height: 217px;width:320px;" ></canvas>
-				</div>
+			<br/>
+				<h1> <FONT FACE="Plume">Signature facultative</font><img src="images/flechePourPack.png"/></h1>
+				<br/>
+				<canvas id="canvasSig" style="height: 150px;width:300px;" ></canvas>
 			</div>
   
   
-		<div data-role="footer" data-id="mcam" data-position="fixed" data-theme="c">
+		<div data-role="footer" data-id="mcam" data-position="fixed" data-theme="c" >
 			<div data-role="navbar">
 				<ul>
 					<li><a href="javascript:preview(false);" >Pas de signature</a></li>
@@ -463,7 +439,7 @@
 		<a href="javascript:detailDest();" data-role="button" data-icon="plus" data-iconpos="right">Ajouter un destinataire</a>
 		<div data-role="content" >
 			<div id="divListDest" style="height:240px;width:280px;">
-				<ul data-role="listview" data-theme="d" id="listedest" data-inset="true"> <!-- Rajouter bouton supprimer -->
+				<ul id="listedest" data-role="listview"  data-inset="true"> <!-- Rajouter bouton supprimer --> 
 				</ul>
 			</div>
 		</div>
@@ -501,10 +477,11 @@
 												<option value="yes">|</option>
 											</select>
 								</li>
-								<li data-role="none" class="corps"><href="javascript:validerPanier();" data-theme="e" data-role="button">PAYER MES 2 CARTES MAINTENANT</a></li>
-								<li data-role="none" class="corps"><href="javascript:detailDest();" data-theme="b" data-role="button">AJOUTER UNE CARTE</a></li>
-								</li>
 					</ul>
+					<br/>
+					<a href="javascript:validerPanier();" data-theme="e" data-role="button">PAYER MES 2 CARTES MAINTENANT</a>
+					<a href="test.html" data-theme="b" data-role="button">AJOUTER UNE CARTE</a>
+				
 				</div>
 				
 			<div data-role="footer" data-theme="c" data-position="fixed" >
@@ -555,36 +532,20 @@
 		</div>
 		
 		<div data-role="content" style="margin:0; padding:0; border:0;width:100%;">
-				
-      	 
+
 			<div id="scrollerPoste" class="contentPoste">
-				<div class="poste"><a href="javascript:carteposteChoix('photo/01.jpg');"><img src="photo/01.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/02.jpg');"><img src="photo/02.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/03.jpg');"><img src="photo/03.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/04.jpg');"><img src="photo/04.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/05.jpg');"><img src="photo/05.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/06.jpg');"><img src="photo/06.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/07.jpg');"><img src="photo/07.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/08.jpg');"><img src="photo/08.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/09.jpg');"><img src="photo/09.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/10.jpg');"><img src="photo/10.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/01.jpg');"><img src="photo/01.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/02.jpg');"><img src="photo/02.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/03.jpg');"><img src="photo/03.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/04.jpg');"><img src="photo/04.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/05.jpg');"><img src="photo/05.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/06.jpg');"><img src="photo/06.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/07.jpg');"><img src="photo/07.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/08.jpg');"><img src="photo/08.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/09.jpg');"><img src="photo/09.jpg" width="195" height="143" /></a></div>
-				<div class="poste"><a href="javascript:carteposteChoix('photo/10.jpg');"><img src="photo/10.jpg" width="195" height="143" /></a></div>
-				
+				<div class="poste"><a href="javascript:carteposteChoix('photo/01.png');"><img src="photo/01.png" width="195" height="143" /></a></div>
+				<div class="poste"><a href="javascript:carteposteChoix('photo/02.png');"><img src="photo/02.png" width="195" height="143" /></a></div>
+			</div>
+			
+			<div class="contentPoste2">
+			<canvas id="cartePo" style="height: 217px;width:320px;" ></canvas>
 			</div>
 		</div>
 		<div data-role="footer" data-id="mcam" data-position="fixed" data-theme="c">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="message" >valider</a></li>
+					<li><a href="#" >valider</a></li>
 				</ul>
 			</div>
 		</div>
@@ -598,7 +559,7 @@
 			<div id="textbarup"> 
 				<p>Connexion</p>
 			</div>
-				<a href="#apercu" data-theme="c" class="ui-btn-left">Retour</a>
+				<a href="#Preview" data-theme="c" class="ui-btn-left">Retour</a>
 			</div>	
 
         <div data-role="content" >
@@ -623,6 +584,7 @@
         <div data-role="footer" data-position="fixed"  class="toolbardown2"> 
 		<br/>
 			<FONT color="black" FACE="Plume"> <h1> Vous n'avez pas de compte? </h1> </font>
+			<br/>
 			<a href="#" data-role="button" data-theme="b">S'INSCRIRE</a>
 		</div> 
 <!-- /header -->
@@ -635,12 +597,12 @@
 				<div id="textbarup"> 
 					<p>Contact</p>
 				</div>
-			<a href="#preview" data-theme="c" class="ui-btn-left">Retour</a>
+			<a href="#listeDestinataires" data-theme="c" class="ui-btn-left">Retour</a>
 		</div>
 		
 		<div data-role="content" >
 			<div id="divListC" style="height:300px;width:280px;">
-				<ul data-role="listview" data-filter="true" data-theme="d" id="listec" data-inset="true"> 
+				<ul data-role="listview" data-theme="d" id="listec" data-inset="true"> 
 				</ul>
 			</div>
 		</div>

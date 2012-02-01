@@ -1,60 +1,246 @@
 <!DOCTYPE HTML>
-		<html>
-			<head>
-				<title>Test Mobile</title>
-				<link rel="stylesheet"  href="jquery.mobile-1.0.min.css" />
-				
-				
-				<link rel="stylesheet" href="css/mcam.css" />
-				<link rel="stylesheet"  href="css/jquery.mobile.scrollview.css" />
-				<script src="js/jquery/jquery.min.js"></script>
-				<script src="js/jquery/jquery-ui.min.js"></script>
-				<script src="js/jquery/jcanvas.min.js"></script>
-				<script src="js/jquery/jquery.mobile.min.js"></script>
-				<script src="js/jquery/jquery.mobile.scrollview.js"></script>
-				<script src="js/jquery/jquery.fieldtag.min.js"></script>
-		<script src="js/base.js"></script>
-		<script src="js/rotate3Di.js"></script>
-		<script src="js/mcampg.js"></script>
-		<script src="js/dessin.js"></script>
-		
-		<!-- Signature -->
-		<link rel="stylesheet" href="build/jquery.signaturepad.css">
-		<script src="build/jquery.signaturepad.min.js"></script>
-		<script>
-			$(document).ready(function() {
-			  $('.sigPad').signaturePad();
-			});
-		</script>
-		
-		
-		
-		<script src="build/json2.min.js"></script>
-		
-				<link rel="stylesheet" href="graphisme.css" />
-				<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
+<html>
+		<head>
+			<title>Test Mobile</title>
+			
+			<link rel="stylesheet"  href="jquery.mobile-1.0.min.css" />
+			<link rel="stylesheet" href="css/mcam.css" />
+			<link rel="stylesheet"  href="css/jquery.mobile.scrollview.css" />
+			<link rel="stylesheet" href="graphisme.css" />
+			
+			<script src="js/jquery/jquery.min.js"></script>
+			<script src="js/jquery/jquery-ui.min.js"></script>
+			<script src="js/jquery/jcanvas.min.js"></script>
+			<script src="js/jquery/jquery.mobile-1.0.min.js"></script>
+			<script src="js/jquery/jquery.mobile.scrollview.js"></script>
+			<script src="js/jquery/jquery.fieldtag.min.js"></script>
+			<script src="js/base.js"></script>
+			<script src="js/rotate3Di.js"></script>
+			<script src="js/mimic.js"></script>
+			<script src="js/mcampg.js"></script>
+			<script src="js/dessin.js"></script>
+			<script src="build/json2.min.js"></script>
+			
+			<script src="mimic.js"></script>
+			<script src="mcamAppelBO.js"></script>
+			<script src="test.js"></script>
+  
+  
+			<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
+		</head>
+	<body >
+			
 
-			</head>
-			<body >
-			    <div data-role="page" id="aide" class="corps">
+	
+<!-- Page Aide -->	
+	<div data-role="page" class="corps" >
+		<div  data-backbtn="false"  id="toolbarup" data-role="header" > 
+			<div id="textbarup"> 
+				<p>Informations</p>
+			</div>
+			<a href="test.html" data-theme="c" class="ui-btn-right" data-direction="reverse">Retour</a>
+		</div>	
 
-        <div data-backbtn="false"  id="toolbarup" data-role="header" > 
+			<div data-role="content">
+						<h1> <FONT FACE="Plume"> Support Client</font><img src="images/flechePourPack.png"/></h1>
+						<a href="#aide" data-transition="pop" data-role="button" data-theme="b">AIDE</a> 
+						<h1> <FONT FACE="Plume">  Mon compte </font><img src="images/flechePourPack.png"/></h1>
+						<a href="#compte" data-role="button" data-theme="b">DONNEES PERSONNELLES</a> 
+						<h1> <FONT FACE="Plume">  Condition generales </font><img src="images/flechePourPack.png"/></h1>
+						<a href="#cgu" data-role="button" data-theme="b">CGU</a> 
+						<a href="#mention" data-role="button" data-theme="b">MENTIONS LEGALES</a> 
+						<a href="#tarif" data-role="button" data-theme="b">TARIFS EN VIGUEUR</a> 
+						<h1> <FONT FACE="Plume">  Autres Applications </font><img src="images/flechePourPack.png"/></h1>
+						<a href="#" data-role="button" data-theme="e">APPLICATIONS LA POSTE</a> 
+						<p>  Version 2.1 </p>
+			</div>
+	</div> 
+		
+<!-- formulaire test -->
+    <div data-role="page" id="compte" class="corps" ontouchmove="touchMove(event);" >
+
+        <div data-backbtn="false"  id="toolbarup" data-role="header" >
+			<div id="textbarup"> 
 				<p>Aide</p>
-				<a href="#menu1" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>
+				<a href="Aide.html" data-theme="c" class="ui-btn-right">Retour</a>
+		</div>	
+
+        <div data-role="content" > 
+                <form>
+                Nom:<INPUT type=text name="nom" placeholder="Entrez votre nom" required/>
+                Prenom:<INPUT type=text name="prenom" placeholder="Entrez votre prenom" required/>
+				Mot de passe:<INPUT type=password name="pass" placeholder="Saisissez un mot de passe" required/>
+				Téléphone:<INPUT type=text name="tel" placeholder="Entrez votre numéro de téléphone" required/>
+				Adresse mail:<INPUT type=text name="mail" placeholder="Entrez votre adresse mail" required/>
+				</br>
+				<input type="submit" value="Envoyer"/>
+                </form> 
+        </div>
+        
+        <div data-role="footer" data-theme="c"> 
+			<h4>Ta-da</h4> 
+		</div> 
+	</div>
+
+<!-- aide -->
+	<div data-role="page" id="aide" class="corps" ontouchmove="touchMove(event);" >
+
+		<div data-backbtn="false"  id="toolbarup" data-role="header" > 
+			<div id="textbarup"> 
+				<p>Aide</p>
+			</div>
+				<a href="Aide.html" data-theme="c" class="ui-btn-right">Retour</a>
 		</div>	
 			<div data-role="content">
 				<ol data-role="listview" data-filter="true" >
-						<li data-role="none" class="corps"><a href="test.html#help">Comment créer envoyer votre carte postale ?</a></li>
+						<li data-role="none" class="corps"><a href="#help">Comment créer envoyer votre carte postale ?</a></li>
 						<li data-role="none" class="corps"><a href="#">Quels sont les différents modes d'envoi de vos cartes ?</a></li>
 						<li data-role="none" class="corps"><a href="#">Qu'est que les CG ?</a></li>
 						<li data-role="none" class="corps"><a href="#">Quelles sont les conditions necessaires à l'envoi de cartes electroniques MaCartamoi ?</a></li>
 				</ol>
 			</div>		
-        
+		
 		<div class="toolbardown" data-position="fixed" data-role="footer" > 
 			<img src="images/logoAvecTitre.png"/>
 		</div>	
-<!-- /header -->
-</div><!-- /page --> 
+	</div>
+		
+		
+<!-- cgu -->
+    <div data-role="page" id="cgu" class="corps" ontouchmove="touchMove(event);" >
+
+        <div data-backbtn="false" id="toolbarup" data-role="header" >
+			<div id="textbarup"> 
+				<p>CGU</p>
+			</div>
+				<a href="Aide.html" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+			<ul data-role="listview">
+					<li data-role="none" data-theme="e">Conditions générales du services MaCartaMoi</li>
+			</ul>
+			        <div data-role="content">
+					Ceci est un test
+					</div>		
+			
+			
+        
+			<div id="toolbarup" data-position="fixed" data-role="footer" > 
+				<img src="images/logoAvecTitre.png"/>
+			</div>	
+	</div>
+
+
+<!-- Mention -->
+    <div data-role="page" id="mention" class="corps" ontouchmove="touchMove(event);" >
+
+       <div data-backbtn="false"  id="toolbarup" data-role="header" >
+			<div id="textbarup"> 
+				<p>Mentions légales</p>
+			</div>
+				<a href="Aide.html" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>	
+			<ul data-role="listview">
+					<li data-role="none" data-theme="e">La Poste</li>
+			</ul>
+			        <div data-role="content" >
+					<p>Société anonyme</p>
+
+					<p>au capital de 3 400 00 000€</p>
+
+					<p>356 000 000 RCS Paris</p>
+
+					<p>Siége social : 44 boulevard Vaugirard, 75 757 Paris Cedex 15</p>
+
+					<p>Tél : 01 55 44 00 00</p>
+
+					<p>Dirécteur de la publication: Vincent Relave</p>
+					
+					<p> <b>Le présent site est hébergé par:</b></p>
+					
+					<p>SARL ASPSERVEUR au capital de 100 000.00 Euros <br/>
+					Siége Social : 785 voie Antiope, ZA Athélia III, 13600 - La Ciotat.<br/>
+					RCS Marseille 451 777 254 APE 6311Z<br/>
+					Gérant : M. MUTEL Stéphane<br/>
+					Email : <a href="#">s.mutel@aspserveur.com</a></p>
+					</div>		
+			
+		<div id="toolbarup" data-role="footer" > 
+			<img src="images/logoAvecTitre.png"/>
+		</div>	
+	</div>
+
+<!-- tarif -->
+<div data-role="page" id="tarif" class="corps" ontouchmove="touchMove(event);" >
+
+        <div data-backbtn="false"  id="toolbarup" data-role="header" >
+			<div id="textbarup"> 
+				<p>Tarifs</p>
+			</div>
+				<a href="Aide.html" data-theme="c" class="ui-btn-right">Retour</a>
+			</div>
+			        <div data-role="content">
+					<b>Achat d'une carte postale à l'acte</b>
+					<table>
+					<tr>
+					<td>Pour la France</td> <td> 2,49€</td>
+					</tr>
+					<tr>
+					<td>Pour les DOM TOM </td><td>2,49€</td>
+					</tr>
+					<tr>
+					<td>Pour les pays d'Europe et la Suisse</td><td> 2,66€</td>
+					</tr>
+					<tr>
+					<td>Pour l'international </td><td>2,78€</td>
+					</tr>
+					</table>
+					<br/>
+					<b>Achat de packs de cartes postales:</b>
+					<table>
+					<tr>
+					<td>Pack de 5 crédits </td><td>10,90€</td>
+					</tr>
+					<tr>
+					<td>Pack de 10 crédits </td><td>19,90€</td>
+					</tr>
+					<tr>
+					<td>Pack de 15 crédits </td><td>27,90€</td>
+					</tr>
+					<tr>
+					<td>Pack de 20 crédits </td><td>35,90€</td>
+					</tr>
+					</table>
+					</div>		
+			
+			
+        
+			<div id="toolbarup" data-position="fixed" data-role="footer" > 
+				<img src="images/logoAvecTitre.png"/>
+			</div>	
+</div>
+
+<!-- Aide test -->
+    <div data-backbtn="false"  data-role="page" id="help" class="corps" ontouchmove="touchMove(event);" >
+
+        <div id="toolbarup" data-role="header" >
+			<div id="textbarup"> 		
+				<p>Aide</p>
+			</div>	
+				<a href="Aide.html#aide" data-theme="c" class="ui-btn-right">Retour</a>
+		</div>
+		
+			<ul data-role="listview">
+					<li data-role="none" data-theme="e">1. Comment créer et envoyer votre carte postale ?</li>
+			</ul>
+			<div data-role="content" >
+			Ceci est un test
+			</div>		
+        
+		<div id="toolbarup" data-position="fixed" data-role="footer" > 
+			<img src="images/logoAvecTitre.png"/>
+		</div>	
+</div>
+
 			</body>
 		</html>

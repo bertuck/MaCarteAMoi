@@ -25,7 +25,12 @@ function clear(){
     var c = canvas.getContext("2d");
     var TWO_PI = Math.PI * 2;
       c.fillStyle = "white"; // l'arriére plan
-      c.fillRect(0, 0, canvas.width, canvas.height);
+      c.fillRect(0, 0, canvas.width, canvas.height);			
+	$("#canvasSig").drawImage({source: 'images/cadreSignaturePortrait.png',
+				 height: 150,
+				 width: 300,
+				 position: "absolute",
+				 fromCenter: false});
     } 
  
 function dot(x, y){

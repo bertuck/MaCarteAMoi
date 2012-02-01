@@ -59,9 +59,15 @@ background-color:#; !important
 .contentPoste{
     border: solid 1px black;
     background-color: white;
-    overflow: hidden;
-    width: 320px;
-    height: 400px;
+    float: left;
+    width: 20%;
+    height: 100%;
+}
+.contentPoste2{
+    border: solid 1px black;
+    float: right;
+    width: 79%;
+    height: 100%;
 }
 .square {
     width: 96px;
