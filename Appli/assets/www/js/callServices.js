@@ -5,8 +5,7 @@ var passUserDefaut = "laposte"
 var cguHtml="";
 
 function test(){
-	BOConnect();
-   //loginBO(userDefaut,passUserDefaut);
-  // cguHtml = getCGU();
-   
-}
+	loginBO(userDefaut,passUserDefaut);
+  	cguHtml = getCGU();
+	//createUser()
+   }
