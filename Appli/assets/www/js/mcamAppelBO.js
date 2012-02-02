@@ -9,8 +9,6 @@ function BOConnect(){
     var response = request.send();  
     rep = response.parseXML();
     sessId = rep.sessid;
-    alert("toto");
-    alert(sessId);
 }
 
 function loginBO(userName,password){
@@ -18,7 +16,6 @@ function loginBO(userName,password){
     param = [userName,password];
     rep=AppelXmlRpc("user.login",param);
     idClient = rep.user.uid;
-    alert(idClient);
 }
 
 function createUser(nom,prenom,password,mail){
